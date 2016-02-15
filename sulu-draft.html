@@ -1,0 +1,2430 @@
+
+<!DOCTYPE html>
+<head>
+   <meta http-equiv="content-type" content="text/html; charset=UTF-8" />
+   <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/leaflet/0.7.3/leaflet.css" />
+   <script src="https://cdnjs.cloudflare.com/ajax/libs/leaflet/0.7.3/leaflet.js"></script>
+
+   <script src="https://ajax.googleapis.com/ajax/libs/jquery/1.11.1/jquery.min.js"></script>
+
+   <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.2.0/css/bootstrap.min.css">
+   <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.2.0/css/bootstrap-theme.min.css">
+   <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.2.0/js/bootstrap.min.js"></script>
+
+   <link href="https://maxcdn.bootstrapcdn.com/font-awesome/4.1.0/css/font-awesome.min.css" rel="stylesheet">
+
+   <link rel="stylesheet" href="https://rawgit.com/lvoogdt/Leaflet.awesome-markers/2.0/develop/dist/leaflet.awesome-markers.css">
+   <script src="https://rawgithub.com/lvoogdt/Leaflet.awesome-markers/2.0/develop/dist/leaflet.awesome-markers.js"></script>
+
+
+   <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/leaflet.markercluster/0.4.0/MarkerCluster.Default.css">
+   <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/leaflet.markercluster/0.4.0/MarkerCluster.css">
+   <script src="https://cdnjs.cloudflare.com/ajax/libs/leaflet.markercluster/0.4.0/leaflet.markercluster-src.js"></script>
+   <script src="https://cdnjs.cloudflare.com/ajax/libs/leaflet.markercluster/0.4.0/leaflet.markercluster.js"></script>
+
+   <link rel="stylesheet" href="https://birdage.github.io/Leaflet.awesome-markers/dist/leaflet.awesome.rotate.css">
+
+   <script src="https://cdnjs.cloudflare.com/ajax/libs/leaflet-dvf/0.2/leaflet-dvf.markers.min.js"></script>
+   
+   
+   
+
+   <style>
+
+      html, body {
+        width: 100%;
+        height: 100%;
+        margin: 0;
+        padding: 0;
+      }
+
+      #map {
+        position:absolute;
+        top:0;
+        bottom:0;
+        right:0;
+        left:0;
+      }
+
+   </style>
+</head>
+
+<body>
+
+   <div class="folium-map" id="folium_a8d7fa1bec2f4d3a96bc23c524756036" style="width: 100%; height: 100%"></div>
+
+   <script>
+
+      
+
+      var base_tile = L.tileLayer('http://{s}.basemaps.cartocdn.com/light_all/{z}/{x}/{y}.png', {
+          maxZoom: 18,
+          minZoom: 1,
+          attribution: 'Map tiles by CartoDB, under CC BY 3.0. Data by OpenStreetMap, under ODbL.'
+      });
+
+      var baseLayer = {
+        "Base Layer": base_tile
+      };
+
+      /*
+      addition of the wms layers
+      */
+
+      
+
+      /*
+      addition of the tile layers
+      */
+      
+
+      /*
+      list of layers to be added
+      */
+      var layer_list = {
+      
+      };
+
+      /*
+      Bounding box.
+      */
+      var southWest = L.latLng(-90, -180),
+          northEast = L.latLng(90, 180),
+          bounds = L.latLngBounds(southWest, northEast);
+
+      /*
+      Creates the map and adds the selected layers
+      */
+      var map = L.map('folium_a8d7fa1bec2f4d3a96bc23c524756036', {
+                                       center:[6.05519, 121.001323],
+                                       zoom: 12,
+                                       maxBounds: bounds,
+                                       layers: [base_tile]
+                                     });
+
+      L.control.layers(baseLayer, layer_list).addTo(map);
+
+      //cluster group
+      var clusteredmarkers = L.markerClusterGroup();
+      //section for adding clustered markers
+      
+      //add the clustered markers to the group anyway
+      map.addLayer(clusteredmarkers);
+
+      
+
+      
+      var polygon_1 = new L.RegularPolygonMarker(new L.LatLng(6.052979, 121.002479), {
+    color: 'black',
+    opacity: 1,
+    weight: 2,
+    fillColor: '#ff0000',
+    fillOpacity: 1,
+    numberOfSides: 4,
+    rotation: 0,
+    radius: 5
+});
+      polygon_1.bindPopup("Hostage Taking (Kidnapping)");
+      polygon_1._popup.options.maxWidth = 300;
+      map.addLayer(polygon_1)
+      
+      var circle_1 = L.circle([6.054391, 121.002195], 1609.34, {
+                            color: '#000',
+                            fillColor: 'none',
+                            fillOpacity: 0.6
+                            });
+      circle_1.bindPopup("Jolo Town Hall");
+      circle_1._popup.options.maxWidth = 300;
+      map.addLayer(circle_1)
+      
+      var polygon_2 = new L.RegularPolygonMarker(new L.LatLng(6.089318, 121.105546), {
+    color: 'black',
+    opacity: 1,
+    weight: 2,
+    fillColor: '#ff0000',
+    fillOpacity: 1,
+    numberOfSides: 4,
+    rotation: 0,
+    radius: 5
+});
+      polygon_2.bindPopup("Armed Assault");
+      polygon_2._popup.options.maxWidth = 300;
+      map.addLayer(polygon_2)
+      
+      var circle_2 = L.circle([6.054391, 121.002195], 1609.34, {
+                            color: '#000',
+                            fillColor: 'none',
+                            fillOpacity: 0.6
+                            });
+      circle_2.bindPopup("Jolo Town Hall");
+      circle_2._popup.options.maxWidth = 300;
+      map.addLayer(circle_2)
+      
+      var polygon_3 = new L.RegularPolygonMarker(new L.LatLng(6.05519, 121.001323), {
+    color: 'black',
+    opacity: 1,
+    weight: 2,
+    fillColor: '#ff0000',
+    fillOpacity: 1,
+    numberOfSides: 4,
+    rotation: 0,
+    radius: 5
+});
+      polygon_3.bindPopup("Bombing/Explosion");
+      polygon_3._popup.options.maxWidth = 300;
+      map.addLayer(polygon_3)
+      
+      var circle_3 = L.circle([6.054391, 121.002195], 1609.34, {
+                            color: '#000',
+                            fillColor: 'none',
+                            fillOpacity: 0.6
+                            });
+      circle_3.bindPopup("Jolo Town Hall");
+      circle_3._popup.options.maxWidth = 300;
+      map.addLayer(circle_3)
+      
+      var polygon_4 = new L.RegularPolygonMarker(new L.LatLng(6.089314, 121.104845), {
+    color: 'black',
+    opacity: 1,
+    weight: 2,
+    fillColor: '#ff0000',
+    fillOpacity: 1,
+    numberOfSides: 4,
+    rotation: 0,
+    radius: 5
+});
+      polygon_4.bindPopup("Hostage Taking (Kidnapping)");
+      polygon_4._popup.options.maxWidth = 300;
+      map.addLayer(polygon_4)
+      
+      var circle_4 = L.circle([6.054391, 121.002195], 1609.34, {
+                            color: '#000',
+                            fillColor: 'none',
+                            fillOpacity: 0.6
+                            });
+      circle_4.bindPopup("Jolo Town Hall");
+      circle_4._popup.options.maxWidth = 300;
+      map.addLayer(circle_4)
+      
+      var polygon_5 = new L.RegularPolygonMarker(new L.LatLng(5.977475, 121.115015), {
+    color: 'black',
+    opacity: 1,
+    weight: 2,
+    fillColor: '#ff0000',
+    fillOpacity: 1,
+    numberOfSides: 4,
+    rotation: 0,
+    radius: 5
+});
+      polygon_5.bindPopup("Hostage Taking (Kidnapping)");
+      polygon_5._popup.options.maxWidth = 300;
+      map.addLayer(polygon_5)
+      
+      var circle_5 = L.circle([6.054391, 121.002195], 1609.34, {
+                            color: '#000',
+                            fillColor: 'none',
+                            fillOpacity: 0.6
+                            });
+      circle_5.bindPopup("Jolo Town Hall");
+      circle_5._popup.options.maxWidth = 300;
+      map.addLayer(circle_5)
+      
+      var polygon_6 = new L.RegularPolygonMarker(new L.LatLng(6.05519, 121.001323), {
+    color: 'black',
+    opacity: 1,
+    weight: 2,
+    fillColor: '#ff0000',
+    fillOpacity: 1,
+    numberOfSides: 4,
+    rotation: 0,
+    radius: 5
+});
+      polygon_6.bindPopup("Armed Assault");
+      polygon_6._popup.options.maxWidth = 300;
+      map.addLayer(polygon_6)
+      
+      var circle_6 = L.circle([6.054391, 121.002195], 1609.34, {
+                            color: '#000',
+                            fillColor: 'none',
+                            fillOpacity: 0.6
+                            });
+      circle_6.bindPopup("Jolo Town Hall");
+      circle_6._popup.options.maxWidth = 300;
+      map.addLayer(circle_6)
+      
+      var polygon_7 = new L.RegularPolygonMarker(new L.LatLng(6.05519, 121.001323), {
+    color: 'black',
+    opacity: 1,
+    weight: 2,
+    fillColor: '#ff0000',
+    fillOpacity: 1,
+    numberOfSides: 4,
+    rotation: 0,
+    radius: 5
+});
+      polygon_7.bindPopup("Bombing/Explosion");
+      polygon_7._popup.options.maxWidth = 300;
+      map.addLayer(polygon_7)
+      
+      var circle_7 = L.circle([6.054391, 121.002195], 1609.34, {
+                            color: '#000',
+                            fillColor: 'none',
+                            fillOpacity: 0.6
+                            });
+      circle_7.bindPopup("Jolo Town Hall");
+      circle_7._popup.options.maxWidth = 300;
+      map.addLayer(circle_7)
+      
+      var polygon_8 = new L.RegularPolygonMarker(new L.LatLng(6.05519, 121.001323), {
+    color: 'black',
+    opacity: 1,
+    weight: 2,
+    fillColor: '#ff0000',
+    fillOpacity: 1,
+    numberOfSides: 4,
+    rotation: 0,
+    radius: 5
+});
+      polygon_8.bindPopup("Bombing/Explosion");
+      polygon_8._popup.options.maxWidth = 300;
+      map.addLayer(polygon_8)
+      
+      var circle_8 = L.circle([6.054391, 121.002195], 1609.34, {
+                            color: '#000',
+                            fillColor: 'none',
+                            fillOpacity: 0.6
+                            });
+      circle_8.bindPopup("Jolo Town Hall");
+      circle_8._popup.options.maxWidth = 300;
+      map.addLayer(circle_8)
+      
+      var polygon_9 = new L.RegularPolygonMarker(new L.LatLng(6.05519, 121.001323), {
+    color: 'black',
+    opacity: 1,
+    weight: 2,
+    fillColor: '#ff0000',
+    fillOpacity: 1,
+    numberOfSides: 4,
+    rotation: 0,
+    radius: 5
+});
+      polygon_9.bindPopup("Hostage Taking (Kidnapping)");
+      polygon_9._popup.options.maxWidth = 300;
+      map.addLayer(polygon_9)
+      
+      var circle_9 = L.circle([6.054391, 121.002195], 1609.34, {
+                            color: '#000',
+                            fillColor: 'none',
+                            fillOpacity: 0.6
+                            });
+      circle_9.bindPopup("Jolo Town Hall");
+      circle_9._popup.options.maxWidth = 300;
+      map.addLayer(circle_9)
+      
+      var polygon_10 = new L.RegularPolygonMarker(new L.LatLng(6.05519, 121.001323), {
+    color: 'black',
+    opacity: 1,
+    weight: 2,
+    fillColor: '#ff0000',
+    fillOpacity: 1,
+    numberOfSides: 4,
+    rotation: 0,
+    radius: 5
+});
+      polygon_10.bindPopup("Bombing/Explosion");
+      polygon_10._popup.options.maxWidth = 300;
+      map.addLayer(polygon_10)
+      
+      var circle_10 = L.circle([6.054391, 121.002195], 1609.34, {
+                            color: '#000',
+                            fillColor: 'none',
+                            fillOpacity: 0.6
+                            });
+      circle_10.bindPopup("Jolo Town Hall");
+      circle_10._popup.options.maxWidth = 300;
+      map.addLayer(circle_10)
+      
+      var polygon_11 = new L.RegularPolygonMarker(new L.LatLng(6.089314, 121.104845), {
+    color: 'black',
+    opacity: 1,
+    weight: 2,
+    fillColor: '#ff0000',
+    fillOpacity: 1,
+    numberOfSides: 4,
+    rotation: 0,
+    radius: 5
+});
+      polygon_11.bindPopup("Hostage Taking (Kidnapping)");
+      polygon_11._popup.options.maxWidth = 300;
+      map.addLayer(polygon_11)
+      
+      var circle_11 = L.circle([6.054391, 121.002195], 1609.34, {
+                            color: '#000',
+                            fillColor: 'none',
+                            fillOpacity: 0.6
+                            });
+      circle_11.bindPopup("Jolo Town Hall");
+      circle_11._popup.options.maxWidth = 300;
+      map.addLayer(circle_11)
+      
+      var polygon_12 = new L.RegularPolygonMarker(new L.LatLng(6.05519, 121.001323), {
+    color: 'black',
+    opacity: 1,
+    weight: 2,
+    fillColor: '#ff0000',
+    fillOpacity: 1,
+    numberOfSides: 4,
+    rotation: 0,
+    radius: 5
+});
+      polygon_12.bindPopup("Armed Assault");
+      polygon_12._popup.options.maxWidth = 300;
+      map.addLayer(polygon_12)
+      
+      var circle_12 = L.circle([6.054391, 121.002195], 1609.34, {
+                            color: '#000',
+                            fillColor: 'none',
+                            fillOpacity: 0.6
+                            });
+      circle_12.bindPopup("Jolo Town Hall");
+      circle_12._popup.options.maxWidth = 300;
+      map.addLayer(circle_12)
+      
+      var polygon_13 = new L.RegularPolygonMarker(new L.LatLng(6.05519, 121.001323), {
+    color: 'black',
+    opacity: 1,
+    weight: 2,
+    fillColor: '#ff0000',
+    fillOpacity: 1,
+    numberOfSides: 4,
+    rotation: 0,
+    radius: 5
+});
+      polygon_13.bindPopup("Hostage Taking (Kidnapping)");
+      polygon_13._popup.options.maxWidth = 300;
+      map.addLayer(polygon_13)
+      
+      var circle_13 = L.circle([6.054391, 121.002195], 1609.34, {
+                            color: '#000',
+                            fillColor: 'none',
+                            fillOpacity: 0.6
+                            });
+      circle_13.bindPopup("Jolo Town Hall");
+      circle_13._popup.options.maxWidth = 300;
+      map.addLayer(circle_13)
+      
+      var polygon_14 = new L.RegularPolygonMarker(new L.LatLng(6.05519, 121.001323), {
+    color: 'black',
+    opacity: 1,
+    weight: 2,
+    fillColor: '#ff0000',
+    fillOpacity: 1,
+    numberOfSides: 4,
+    rotation: 0,
+    radius: 5
+});
+      polygon_14.bindPopup("Bombing/Explosion");
+      polygon_14._popup.options.maxWidth = 300;
+      map.addLayer(polygon_14)
+      
+      var circle_14 = L.circle([6.054391, 121.002195], 1609.34, {
+                            color: '#000',
+                            fillColor: 'none',
+                            fillOpacity: 0.6
+                            });
+      circle_14.bindPopup("Jolo Town Hall");
+      circle_14._popup.options.maxWidth = 300;
+      map.addLayer(circle_14)
+      
+      var polygon_15 = new L.RegularPolygonMarker(new L.LatLng(6.05519, 121.001323), {
+    color: 'black',
+    opacity: 1,
+    weight: 2,
+    fillColor: '#ff0000',
+    fillOpacity: 1,
+    numberOfSides: 4,
+    rotation: 0,
+    radius: 5
+});
+      polygon_15.bindPopup("Assassination");
+      polygon_15._popup.options.maxWidth = 300;
+      map.addLayer(polygon_15)
+      
+      var circle_15 = L.circle([6.054391, 121.002195], 1609.34, {
+                            color: '#000',
+                            fillColor: 'none',
+                            fillOpacity: 0.6
+                            });
+      circle_15.bindPopup("Jolo Town Hall");
+      circle_15._popup.options.maxWidth = 300;
+      map.addLayer(circle_15)
+      
+      var polygon_16 = new L.RegularPolygonMarker(new L.LatLng(5.975142, 121.114526), {
+    color: 'black',
+    opacity: 1,
+    weight: 2,
+    fillColor: '#ff0000',
+    fillOpacity: 1,
+    numberOfSides: 4,
+    rotation: 0,
+    radius: 5
+});
+      polygon_16.bindPopup("Armed Assault");
+      polygon_16._popup.options.maxWidth = 300;
+      map.addLayer(polygon_16)
+      
+      var circle_16 = L.circle([6.054391, 121.002195], 1609.34, {
+                            color: '#000',
+                            fillColor: 'none',
+                            fillOpacity: 0.6
+                            });
+      circle_16.bindPopup("Jolo Town Hall");
+      circle_16._popup.options.maxWidth = 300;
+      map.addLayer(circle_16)
+      
+      var polygon_17 = new L.RegularPolygonMarker(new L.LatLng(6.089515, 121.105521), {
+    color: 'black',
+    opacity: 1,
+    weight: 2,
+    fillColor: '#ff0000',
+    fillOpacity: 1,
+    numberOfSides: 4,
+    rotation: 0,
+    radius: 5
+});
+      polygon_17.bindPopup("Armed Assault");
+      polygon_17._popup.options.maxWidth = 300;
+      map.addLayer(polygon_17)
+      
+      var circle_17 = L.circle([6.054391, 121.002195], 1609.34, {
+                            color: '#000',
+                            fillColor: 'none',
+                            fillOpacity: 0.6
+                            });
+      circle_17.bindPopup("Jolo Town Hall");
+      circle_17._popup.options.maxWidth = 300;
+      map.addLayer(circle_17)
+      
+      var polygon_18 = new L.RegularPolygonMarker(new L.LatLng(6.05519, 121.001323), {
+    color: 'black',
+    opacity: 1,
+    weight: 2,
+    fillColor: '#ff0000',
+    fillOpacity: 1,
+    numberOfSides: 4,
+    rotation: 0,
+    radius: 5
+});
+      polygon_18.bindPopup("Hostage Taking (Kidnapping)");
+      polygon_18._popup.options.maxWidth = 300;
+      map.addLayer(polygon_18)
+      
+      var circle_18 = L.circle([6.054391, 121.002195], 1609.34, {
+                            color: '#000',
+                            fillColor: 'none',
+                            fillOpacity: 0.6
+                            });
+      circle_18.bindPopup("Jolo Town Hall");
+      circle_18._popup.options.maxWidth = 300;
+      map.addLayer(circle_18)
+      
+      var polygon_19 = new L.RegularPolygonMarker(new L.LatLng(5.9735, 120.9698), {
+    color: 'black',
+    opacity: 1,
+    weight: 2,
+    fillColor: '#ff0000',
+    fillOpacity: 1,
+    numberOfSides: 4,
+    rotation: 0,
+    radius: 5
+});
+      polygon_19.bindPopup("Armed Assault");
+      polygon_19._popup.options.maxWidth = 300;
+      map.addLayer(polygon_19)
+      
+      var circle_19 = L.circle([6.054391, 121.002195], 1609.34, {
+                            color: '#000',
+                            fillColor: 'none',
+                            fillOpacity: 0.6
+                            });
+      circle_19.bindPopup("Jolo Town Hall");
+      circle_19._popup.options.maxWidth = 300;
+      map.addLayer(circle_19)
+      
+      var polygon_20 = new L.RegularPolygonMarker(new L.LatLng(6.053752, 120.999948), {
+    color: 'black',
+    opacity: 1,
+    weight: 2,
+    fillColor: '#ff0000',
+    fillOpacity: 1,
+    numberOfSides: 4,
+    rotation: 0,
+    radius: 5
+});
+      polygon_20.bindPopup("Hostage Taking (Kidnapping)");
+      polygon_20._popup.options.maxWidth = 300;
+      map.addLayer(polygon_20)
+      
+      var circle_20 = L.circle([6.054391, 121.002195], 1609.34, {
+                            color: '#000',
+                            fillColor: 'none',
+                            fillOpacity: 0.6
+                            });
+      circle_20.bindPopup("Jolo Town Hall");
+      circle_20._popup.options.maxWidth = 300;
+      map.addLayer(circle_20)
+      
+      var polygon_21 = new L.RegularPolygonMarker(new L.LatLng(5.544054, 120.815636), {
+    color: 'black',
+    opacity: 1,
+    weight: 2,
+    fillColor: '#ff0000',
+    fillOpacity: 1,
+    numberOfSides: 4,
+    rotation: 0,
+    radius: 5
+});
+      polygon_21.bindPopup("Hostage Taking (Kidnapping)");
+      polygon_21._popup.options.maxWidth = 300;
+      map.addLayer(polygon_21)
+      
+      var circle_21 = L.circle([6.054391, 121.002195], 1609.34, {
+                            color: '#000',
+                            fillColor: 'none',
+                            fillOpacity: 0.6
+                            });
+      circle_21.bindPopup("Jolo Town Hall");
+      circle_21._popup.options.maxWidth = 300;
+      map.addLayer(circle_21)
+      
+      var polygon_22 = new L.RegularPolygonMarker(new L.LatLng(6.053752, 120.999948), {
+    color: 'black',
+    opacity: 1,
+    weight: 2,
+    fillColor: '#ff0000',
+    fillOpacity: 1,
+    numberOfSides: 4,
+    rotation: 0,
+    radius: 5
+});
+      polygon_22.bindPopup("Bombing/Explosion");
+      polygon_22._popup.options.maxWidth = 300;
+      map.addLayer(polygon_22)
+      
+      var circle_22 = L.circle([6.054391, 121.002195], 1609.34, {
+                            color: '#000',
+                            fillColor: 'none',
+                            fillOpacity: 0.6
+                            });
+      circle_22.bindPopup("Jolo Town Hall");
+      circle_22._popup.options.maxWidth = 300;
+      map.addLayer(circle_22)
+      
+      var polygon_23 = new L.RegularPolygonMarker(new L.LatLng(6.047365, 121.008961), {
+    color: 'black',
+    opacity: 1,
+    weight: 2,
+    fillColor: '#ff0000',
+    fillOpacity: 1,
+    numberOfSides: 4,
+    rotation: 0,
+    radius: 5
+});
+      polygon_23.bindPopup("Bombing/Explosion");
+      polygon_23._popup.options.maxWidth = 300;
+      map.addLayer(polygon_23)
+      
+      var circle_23 = L.circle([6.054391, 121.002195], 1609.34, {
+                            color: '#000',
+                            fillColor: 'none',
+                            fillOpacity: 0.6
+                            });
+      circle_23.bindPopup("Jolo Town Hall");
+      circle_23._popup.options.maxWidth = 300;
+      map.addLayer(circle_23)
+      
+      var polygon_24 = new L.RegularPolygonMarker(new L.LatLng(5.9137, 120.9056), {
+    color: 'black',
+    opacity: 1,
+    weight: 2,
+    fillColor: '#ff0000',
+    fillOpacity: 1,
+    numberOfSides: 4,
+    rotation: 0,
+    radius: 5
+});
+      polygon_24.bindPopup("Hostage Taking (Kidnapping)");
+      polygon_24._popup.options.maxWidth = 300;
+      map.addLayer(polygon_24)
+      
+      var circle_24 = L.circle([6.054391, 121.002195], 1609.34, {
+                            color: '#000',
+                            fillColor: 'none',
+                            fillOpacity: 0.6
+                            });
+      circle_24.bindPopup("Jolo Town Hall");
+      circle_24._popup.options.maxWidth = 300;
+      map.addLayer(circle_24)
+      
+      var polygon_25 = new L.RegularPolygonMarker(new L.LatLng(6.05519, 121.001323), {
+    color: 'black',
+    opacity: 1,
+    weight: 2,
+    fillColor: '#ff0000',
+    fillOpacity: 1,
+    numberOfSides: 4,
+    rotation: 0,
+    radius: 5
+});
+      polygon_25.bindPopup("Armed Assault");
+      polygon_25._popup.options.maxWidth = 300;
+      map.addLayer(polygon_25)
+      
+      var circle_25 = L.circle([6.054391, 121.002195], 1609.34, {
+                            color: '#000',
+                            fillColor: 'none',
+                            fillOpacity: 0.6
+                            });
+      circle_25.bindPopup("Jolo Town Hall");
+      circle_25._popup.options.maxWidth = 300;
+      map.addLayer(circle_25)
+      
+      var polygon_26 = new L.RegularPolygonMarker(new L.LatLng(6.089318, 121.105546), {
+    color: 'black',
+    opacity: 1,
+    weight: 2,
+    fillColor: '#ff0000',
+    fillOpacity: 1,
+    numberOfSides: 4,
+    rotation: 0,
+    radius: 5
+});
+      polygon_26.bindPopup("Armed Assault");
+      polygon_26._popup.options.maxWidth = 300;
+      map.addLayer(polygon_26)
+      
+      var circle_26 = L.circle([6.054391, 121.002195], 1609.34, {
+                            color: '#000',
+                            fillColor: 'none',
+                            fillOpacity: 0.6
+                            });
+      circle_26.bindPopup("Jolo Town Hall");
+      circle_26._popup.options.maxWidth = 300;
+      map.addLayer(circle_26)
+      
+      var polygon_27 = new L.RegularPolygonMarker(new L.LatLng(6.05519, 121.001323), {
+    color: 'black',
+    opacity: 1,
+    weight: 2,
+    fillColor: '#ff0000',
+    fillOpacity: 1,
+    numberOfSides: 4,
+    rotation: 0,
+    radius: 5
+});
+      polygon_27.bindPopup("Armed Assault");
+      polygon_27._popup.options.maxWidth = 300;
+      map.addLayer(polygon_27)
+      
+      var circle_27 = L.circle([6.054391, 121.002195], 1609.34, {
+                            color: '#000',
+                            fillColor: 'none',
+                            fillOpacity: 0.6
+                            });
+      circle_27.bindPopup("Jolo Town Hall");
+      circle_27._popup.options.maxWidth = 300;
+      map.addLayer(circle_27)
+      
+      var polygon_28 = new L.RegularPolygonMarker(new L.LatLng(6.053752, 120.999948), {
+    color: 'black',
+    opacity: 1,
+    weight: 2,
+    fillColor: '#ff0000',
+    fillOpacity: 1,
+    numberOfSides: 4,
+    rotation: 0,
+    radius: 5
+});
+      polygon_28.bindPopup("Bombing/Explosion");
+      polygon_28._popup.options.maxWidth = 300;
+      map.addLayer(polygon_28)
+      
+      var circle_28 = L.circle([6.054391, 121.002195], 1609.34, {
+                            color: '#000',
+                            fillColor: 'none',
+                            fillOpacity: 0.6
+                            });
+      circle_28.bindPopup("Jolo Town Hall");
+      circle_28._popup.options.maxWidth = 300;
+      map.addLayer(circle_28)
+      
+      var polygon_29 = new L.RegularPolygonMarker(new L.LatLng(6.05519, 121.001323), {
+    color: 'black',
+    opacity: 1,
+    weight: 2,
+    fillColor: '#ff0000',
+    fillOpacity: 1,
+    numberOfSides: 4,
+    rotation: 0,
+    radius: 5
+});
+      polygon_29.bindPopup("Armed Assault");
+      polygon_29._popup.options.maxWidth = 300;
+      map.addLayer(polygon_29)
+      
+      var circle_29 = L.circle([6.054391, 121.002195], 1609.34, {
+                            color: '#000',
+                            fillColor: 'none',
+                            fillOpacity: 0.6
+                            });
+      circle_29.bindPopup("Jolo Town Hall");
+      circle_29._popup.options.maxWidth = 300;
+      map.addLayer(circle_29)
+      
+      var polygon_30 = new L.RegularPolygonMarker(new L.LatLng(5.9137, 120.9056), {
+    color: 'black',
+    opacity: 1,
+    weight: 2,
+    fillColor: '#ff0000',
+    fillOpacity: 1,
+    numberOfSides: 4,
+    rotation: 0,
+    radius: 5
+});
+      polygon_30.bindPopup("Hostage Taking (Kidnapping)");
+      polygon_30._popup.options.maxWidth = 300;
+      map.addLayer(polygon_30)
+      
+      var circle_30 = L.circle([6.054391, 121.002195], 1609.34, {
+                            color: '#000',
+                            fillColor: 'none',
+                            fillOpacity: 0.6
+                            });
+      circle_30.bindPopup("Jolo Town Hall");
+      circle_30._popup.options.maxWidth = 300;
+      map.addLayer(circle_30)
+      
+      var polygon_31 = new L.RegularPolygonMarker(new L.LatLng(6.05519, 121.001323), {
+    color: 'black',
+    opacity: 1,
+    weight: 2,
+    fillColor: '#ff0000',
+    fillOpacity: 1,
+    numberOfSides: 4,
+    rotation: 0,
+    radius: 5
+});
+      polygon_31.bindPopup("Hostage Taking (Kidnapping)");
+      polygon_31._popup.options.maxWidth = 300;
+      map.addLayer(polygon_31)
+      
+      var circle_31 = L.circle([6.054391, 121.002195], 1609.34, {
+                            color: '#000',
+                            fillColor: 'none',
+                            fillOpacity: 0.6
+                            });
+      circle_31.bindPopup("Jolo Town Hall");
+      circle_31._popup.options.maxWidth = 300;
+      map.addLayer(circle_31)
+      
+      var polygon_32 = new L.RegularPolygonMarker(new L.LatLng(6.05519, 121.001323), {
+    color: 'black',
+    opacity: 1,
+    weight: 2,
+    fillColor: '#ff0000',
+    fillOpacity: 1,
+    numberOfSides: 4,
+    rotation: 0,
+    radius: 5
+});
+      polygon_32.bindPopup("Armed Assault");
+      polygon_32._popup.options.maxWidth = 300;
+      map.addLayer(polygon_32)
+      
+      var circle_32 = L.circle([6.054391, 121.002195], 1609.34, {
+                            color: '#000',
+                            fillColor: 'none',
+                            fillOpacity: 0.6
+                            });
+      circle_32.bindPopup("Jolo Town Hall");
+      circle_32._popup.options.maxWidth = 300;
+      map.addLayer(circle_32)
+      
+      var polygon_33 = new L.RegularPolygonMarker(new L.LatLng(6.05519, 121.001323), {
+    color: 'black',
+    opacity: 1,
+    weight: 2,
+    fillColor: '#ff0000',
+    fillOpacity: 1,
+    numberOfSides: 4,
+    rotation: 0,
+    radius: 5
+});
+      polygon_33.bindPopup("Bombing/Explosion");
+      polygon_33._popup.options.maxWidth = 300;
+      map.addLayer(polygon_33)
+      
+      var circle_33 = L.circle([6.054391, 121.002195], 1609.34, {
+                            color: '#000',
+                            fillColor: 'none',
+                            fillOpacity: 0.6
+                            });
+      circle_33.bindPopup("Jolo Town Hall");
+      circle_33._popup.options.maxWidth = 300;
+      map.addLayer(circle_33)
+      
+      var polygon_34 = new L.RegularPolygonMarker(new L.LatLng(6.055385, 121.012724), {
+    color: 'black',
+    opacity: 1,
+    weight: 2,
+    fillColor: '#ff0000',
+    fillOpacity: 1,
+    numberOfSides: 4,
+    rotation: 0,
+    radius: 5
+});
+      polygon_34.bindPopup("Bombing/Explosion");
+      polygon_34._popup.options.maxWidth = 300;
+      map.addLayer(polygon_34)
+      
+      var circle_34 = L.circle([6.054391, 121.002195], 1609.34, {
+                            color: '#000',
+                            fillColor: 'none',
+                            fillOpacity: 0.6
+                            });
+      circle_34.bindPopup("Jolo Town Hall");
+      circle_34._popup.options.maxWidth = 300;
+      map.addLayer(circle_34)
+      
+      var polygon_35 = new L.RegularPolygonMarker(new L.LatLng(5.96147, 120.988483), {
+    color: 'black',
+    opacity: 1,
+    weight: 2,
+    fillColor: '#ff0000',
+    fillOpacity: 1,
+    numberOfSides: 4,
+    rotation: 0,
+    radius: 5
+});
+      polygon_35.bindPopup("Hostage Taking (Kidnapping)");
+      polygon_35._popup.options.maxWidth = 300;
+      map.addLayer(polygon_35)
+      
+      var circle_35 = L.circle([6.054391, 121.002195], 1609.34, {
+                            color: '#000',
+                            fillColor: 'none',
+                            fillOpacity: 0.6
+                            });
+      circle_35.bindPopup("Jolo Town Hall");
+      circle_35._popup.options.maxWidth = 300;
+      map.addLayer(circle_35)
+      
+      var polygon_36 = new L.RegularPolygonMarker(new L.LatLng(5.917386, 120.99701), {
+    color: 'black',
+    opacity: 1,
+    weight: 2,
+    fillColor: '#ff0000',
+    fillOpacity: 1,
+    numberOfSides: 4,
+    rotation: 0,
+    radius: 5
+});
+      polygon_36.bindPopup("Hostage Taking (Kidnapping)");
+      polygon_36._popup.options.maxWidth = 300;
+      map.addLayer(polygon_36)
+      
+      var circle_36 = L.circle([6.054391, 121.002195], 1609.34, {
+                            color: '#000',
+                            fillColor: 'none',
+                            fillOpacity: 0.6
+                            });
+      circle_36.bindPopup("Jolo Town Hall");
+      circle_36._popup.options.maxWidth = 300;
+      map.addLayer(circle_36)
+      
+      var polygon_37 = new L.RegularPolygonMarker(new L.LatLng(5.927787, 121.028412), {
+    color: 'black',
+    opacity: 1,
+    weight: 2,
+    fillColor: '#ff0000',
+    fillOpacity: 1,
+    numberOfSides: 4,
+    rotation: 0,
+    radius: 5
+});
+      polygon_37.bindPopup("Hostage Taking (Kidnapping)");
+      polygon_37._popup.options.maxWidth = 300;
+      map.addLayer(polygon_37)
+      
+      var circle_37 = L.circle([6.054391, 121.002195], 1609.34, {
+                            color: '#000',
+                            fillColor: 'none',
+                            fillOpacity: 0.6
+                            });
+      circle_37.bindPopup("Jolo Town Hall");
+      circle_37._popup.options.maxWidth = 300;
+      map.addLayer(circle_37)
+      
+      var polygon_38 = new L.RegularPolygonMarker(new L.LatLng(5.960634, 120.961543), {
+    color: 'black',
+    opacity: 1,
+    weight: 2,
+    fillColor: '#ff0000',
+    fillOpacity: 1,
+    numberOfSides: 4,
+    rotation: 0,
+    radius: 5
+});
+      polygon_38.bindPopup("Hostage Taking (Kidnapping)");
+      polygon_38._popup.options.maxWidth = 300;
+      map.addLayer(polygon_38)
+      
+      var circle_38 = L.circle([6.054391, 121.002195], 1609.34, {
+                            color: '#000',
+                            fillColor: 'none',
+                            fillOpacity: 0.6
+                            });
+      circle_38.bindPopup("Jolo Town Hall");
+      circle_38._popup.options.maxWidth = 300;
+      map.addLayer(circle_38)
+      
+      var polygon_39 = new L.RegularPolygonMarker(new L.LatLng(5.9137, 120.9056), {
+    color: 'black',
+    opacity: 1,
+    weight: 2,
+    fillColor: '#ff0000',
+    fillOpacity: 1,
+    numberOfSides: 4,
+    rotation: 0,
+    radius: 5
+});
+      polygon_39.bindPopup("Hostage Taking (Kidnapping)");
+      polygon_39._popup.options.maxWidth = 300;
+      map.addLayer(polygon_39)
+      
+      var circle_39 = L.circle([6.054391, 121.002195], 1609.34, {
+                            color: '#000',
+                            fillColor: 'none',
+                            fillOpacity: 0.6
+                            });
+      circle_39.bindPopup("Jolo Town Hall");
+      circle_39._popup.options.maxWidth = 300;
+      map.addLayer(circle_39)
+      
+      var polygon_40 = new L.RegularPolygonMarker(new L.LatLng(6.053866, 121.013799), {
+    color: 'black',
+    opacity: 1,
+    weight: 2,
+    fillColor: '#ff0000',
+    fillOpacity: 1,
+    numberOfSides: 4,
+    rotation: 0,
+    radius: 5
+});
+      polygon_40.bindPopup("Bombing/Explosion");
+      polygon_40._popup.options.maxWidth = 300;
+      map.addLayer(polygon_40)
+      
+      var circle_40 = L.circle([6.054391, 121.002195], 1609.34, {
+                            color: '#000',
+                            fillColor: 'none',
+                            fillOpacity: 0.6
+                            });
+      circle_40.bindPopup("Jolo Town Hall");
+      circle_40._popup.options.maxWidth = 300;
+      map.addLayer(circle_40)
+      
+      var polygon_41 = new L.RegularPolygonMarker(new L.LatLng(5.9137, 120.9056), {
+    color: 'black',
+    opacity: 1,
+    weight: 2,
+    fillColor: '#ff0000',
+    fillOpacity: 1,
+    numberOfSides: 4,
+    rotation: 0,
+    radius: 5
+});
+      polygon_41.bindPopup("Hostage Taking (Kidnapping)");
+      polygon_41._popup.options.maxWidth = 300;
+      map.addLayer(polygon_41)
+      
+      var circle_41 = L.circle([6.054391, 121.002195], 1609.34, {
+                            color: '#000',
+                            fillColor: 'none',
+                            fillOpacity: 0.6
+                            });
+      circle_41.bindPopup("Jolo Town Hall");
+      circle_41._popup.options.maxWidth = 300;
+      map.addLayer(circle_41)
+      
+      var polygon_42 = new L.RegularPolygonMarker(new L.LatLng(6.053752, 120.999948), {
+    color: 'black',
+    opacity: 1,
+    weight: 2,
+    fillColor: '#ff0000',
+    fillOpacity: 1,
+    numberOfSides: 4,
+    rotation: 0,
+    radius: 5
+});
+      polygon_42.bindPopup("Hostage Taking (Kidnapping)");
+      polygon_42._popup.options.maxWidth = 300;
+      map.addLayer(polygon_42)
+      
+      var circle_42 = L.circle([6.054391, 121.002195], 1609.34, {
+                            color: '#000',
+                            fillColor: 'none',
+                            fillOpacity: 0.6
+                            });
+      circle_42.bindPopup("Jolo Town Hall");
+      circle_42._popup.options.maxWidth = 300;
+      map.addLayer(circle_42)
+      
+      var polygon_43 = new L.RegularPolygonMarker(new L.LatLng(6.066693, 121.100042), {
+    color: 'black',
+    opacity: 1,
+    weight: 2,
+    fillColor: '#ff0000',
+    fillOpacity: 1,
+    numberOfSides: 4,
+    rotation: 0,
+    radius: 5
+});
+      polygon_43.bindPopup("Facility/Infrastructure Attack");
+      polygon_43._popup.options.maxWidth = 300;
+      map.addLayer(polygon_43)
+      
+      var circle_43 = L.circle([6.054391, 121.002195], 1609.34, {
+                            color: '#000',
+                            fillColor: 'none',
+                            fillOpacity: 0.6
+                            });
+      circle_43.bindPopup("Jolo Town Hall");
+      circle_43._popup.options.maxWidth = 300;
+      map.addLayer(circle_43)
+      
+      var polygon_44 = new L.RegularPolygonMarker(new L.LatLng(6.05519, 121.001323), {
+    color: 'black',
+    opacity: 1,
+    weight: 2,
+    fillColor: '#ff0000',
+    fillOpacity: 1,
+    numberOfSides: 4,
+    rotation: 0,
+    radius: 5
+});
+      polygon_44.bindPopup("Bombing/Explosion");
+      polygon_44._popup.options.maxWidth = 300;
+      map.addLayer(polygon_44)
+      
+      var circle_44 = L.circle([6.054391, 121.002195], 1609.34, {
+                            color: '#000',
+                            fillColor: 'none',
+                            fillOpacity: 0.6
+                            });
+      circle_44.bindPopup("Jolo Town Hall");
+      circle_44._popup.options.maxWidth = 300;
+      map.addLayer(circle_44)
+      
+      var polygon_45 = new L.RegularPolygonMarker(new L.LatLng(5.951583, 120.939646), {
+    color: 'black',
+    opacity: 1,
+    weight: 2,
+    fillColor: '#ff0000',
+    fillOpacity: 1,
+    numberOfSides: 4,
+    rotation: 0,
+    radius: 5
+});
+      polygon_45.bindPopup("Facility/Infrastructure Attack");
+      polygon_45._popup.options.maxWidth = 300;
+      map.addLayer(polygon_45)
+      
+      var circle_45 = L.circle([6.054391, 121.002195], 1609.34, {
+                            color: '#000',
+                            fillColor: 'none',
+                            fillOpacity: 0.6
+                            });
+      circle_45.bindPopup("Jolo Town Hall");
+      circle_45._popup.options.maxWidth = 300;
+      map.addLayer(circle_45)
+      
+      var polygon_46 = new L.RegularPolygonMarker(new L.LatLng(5.927787, 121.028412), {
+    color: 'black',
+    opacity: 1,
+    weight: 2,
+    fillColor: '#ff0000',
+    fillOpacity: 1,
+    numberOfSides: 4,
+    rotation: 0,
+    radius: 5
+});
+      polygon_46.bindPopup("Armed Assault");
+      polygon_46._popup.options.maxWidth = 300;
+      map.addLayer(polygon_46)
+      
+      var circle_46 = L.circle([6.054391, 121.002195], 1609.34, {
+                            color: '#000',
+                            fillColor: 'none',
+                            fillOpacity: 0.6
+                            });
+      circle_46.bindPopup("Jolo Town Hall");
+      circle_46._popup.options.maxWidth = 300;
+      map.addLayer(circle_46)
+      
+      var polygon_47 = new L.RegularPolygonMarker(new L.LatLng(6.05519, 121.001323), {
+    color: 'black',
+    opacity: 1,
+    weight: 2,
+    fillColor: '#ff0000',
+    fillOpacity: 1,
+    numberOfSides: 4,
+    rotation: 0,
+    radius: 5
+});
+      polygon_47.bindPopup("Bombing/Explosion");
+      polygon_47._popup.options.maxWidth = 300;
+      map.addLayer(polygon_47)
+      
+      var circle_47 = L.circle([6.054391, 121.002195], 1609.34, {
+                            color: '#000',
+                            fillColor: 'none',
+                            fillOpacity: 0.6
+                            });
+      circle_47.bindPopup("Jolo Town Hall");
+      circle_47._popup.options.maxWidth = 300;
+      map.addLayer(circle_47)
+      
+      var polygon_48 = new L.RegularPolygonMarker(new L.LatLng(6.05519, 121.001323), {
+    color: 'black',
+    opacity: 1,
+    weight: 2,
+    fillColor: '#ff0000',
+    fillOpacity: 1,
+    numberOfSides: 4,
+    rotation: 0,
+    radius: 5
+});
+      polygon_48.bindPopup("Bombing/Explosion");
+      polygon_48._popup.options.maxWidth = 300;
+      map.addLayer(polygon_48)
+      
+      var circle_48 = L.circle([6.054391, 121.002195], 1609.34, {
+                            color: '#000',
+                            fillColor: 'none',
+                            fillOpacity: 0.6
+                            });
+      circle_48.bindPopup("Jolo Town Hall");
+      circle_48._popup.options.maxWidth = 300;
+      map.addLayer(circle_48)
+      
+      var polygon_49 = new L.RegularPolygonMarker(new L.LatLng(6.033317, 120.947301), {
+    color: 'black',
+    opacity: 1,
+    weight: 2,
+    fillColor: '#ff0000',
+    fillOpacity: 1,
+    numberOfSides: 4,
+    rotation: 0,
+    radius: 5
+});
+      polygon_49.bindPopup("Bombing/Explosion");
+      polygon_49._popup.options.maxWidth = 300;
+      map.addLayer(polygon_49)
+      
+      var circle_49 = L.circle([6.054391, 121.002195], 1609.34, {
+                            color: '#000',
+                            fillColor: 'none',
+                            fillOpacity: 0.6
+                            });
+      circle_49.bindPopup("Jolo Town Hall");
+      circle_49._popup.options.maxWidth = 300;
+      map.addLayer(circle_49)
+      
+      var polygon_50 = new L.RegularPolygonMarker(new L.LatLng(5.977475, 121.115015), {
+    color: 'black',
+    opacity: 1,
+    weight: 2,
+    fillColor: '#ff0000',
+    fillOpacity: 1,
+    numberOfSides: 4,
+    rotation: 0,
+    radius: 5
+});
+      polygon_50.bindPopup("Bombing/Explosion");
+      polygon_50._popup.options.maxWidth = 300;
+      map.addLayer(polygon_50)
+      
+      var circle_50 = L.circle([6.054391, 121.002195], 1609.34, {
+                            color: '#000',
+                            fillColor: 'none',
+                            fillOpacity: 0.6
+                            });
+      circle_50.bindPopup("Jolo Town Hall");
+      circle_50._popup.options.maxWidth = 300;
+      map.addLayer(circle_50)
+      
+      var polygon_51 = new L.RegularPolygonMarker(new L.LatLng(6.079257, 121.057255), {
+    color: 'black',
+    opacity: 1,
+    weight: 2,
+    fillColor: '#ff0000',
+    fillOpacity: 1,
+    numberOfSides: 4,
+    rotation: 0,
+    radius: 5
+});
+      polygon_51.bindPopup("Hostage Taking (Kidnapping)");
+      polygon_51._popup.options.maxWidth = 300;
+      map.addLayer(polygon_51)
+      
+      var circle_51 = L.circle([6.054391, 121.002195], 1609.34, {
+                            color: '#000',
+                            fillColor: 'none',
+                            fillOpacity: 0.6
+                            });
+      circle_51.bindPopup("Jolo Town Hall");
+      circle_51._popup.options.maxWidth = 300;
+      map.addLayer(circle_51)
+      
+      var polygon_52 = new L.RegularPolygonMarker(new L.LatLng(6.074574, 121.134326), {
+    color: 'black',
+    opacity: 1,
+    weight: 2,
+    fillColor: '#ff0000',
+    fillOpacity: 1,
+    numberOfSides: 4,
+    rotation: 0,
+    radius: 5
+});
+      polygon_52.bindPopup("Bombing/Explosion");
+      polygon_52._popup.options.maxWidth = 300;
+      map.addLayer(polygon_52)
+      
+      var circle_52 = L.circle([6.054391, 121.002195], 1609.34, {
+                            color: '#000',
+                            fillColor: 'none',
+                            fillOpacity: 0.6
+                            });
+      circle_52.bindPopup("Jolo Town Hall");
+      circle_52._popup.options.maxWidth = 300;
+      map.addLayer(circle_52)
+      
+      var polygon_53 = new L.RegularPolygonMarker(new L.LatLng(6.045683, 121.008306), {
+    color: 'black',
+    opacity: 1,
+    weight: 2,
+    fillColor: '#ff0000',
+    fillOpacity: 1,
+    numberOfSides: 4,
+    rotation: 0,
+    radius: 5
+});
+      polygon_53.bindPopup("Bombing/Explosion");
+      polygon_53._popup.options.maxWidth = 300;
+      map.addLayer(polygon_53)
+      
+      var circle_53 = L.circle([6.054391, 121.002195], 1609.34, {
+                            color: '#000',
+                            fillColor: 'none',
+                            fillOpacity: 0.6
+                            });
+      circle_53.bindPopup("Jolo Town Hall");
+      circle_53._popup.options.maxWidth = 300;
+      map.addLayer(circle_53)
+      
+      var polygon_54 = new L.RegularPolygonMarker(new L.LatLng(5.9735, 120.9698), {
+    color: 'black',
+    opacity: 1,
+    weight: 2,
+    fillColor: '#ff0000',
+    fillOpacity: 1,
+    numberOfSides: 4,
+    rotation: 0,
+    radius: 5
+});
+      polygon_54.bindPopup("Bombing/Explosion");
+      polygon_54._popup.options.maxWidth = 300;
+      map.addLayer(polygon_54)
+      
+      var circle_54 = L.circle([6.054391, 121.002195], 1609.34, {
+                            color: '#000',
+                            fillColor: 'none',
+                            fillOpacity: 0.6
+                            });
+      circle_54.bindPopup("Jolo Town Hall");
+      circle_54._popup.options.maxWidth = 300;
+      map.addLayer(circle_54)
+      
+      var polygon_55 = new L.RegularPolygonMarker(new L.LatLng(6.069434, 121.032351), {
+    color: 'black',
+    opacity: 1,
+    weight: 2,
+    fillColor: '#ff0000',
+    fillOpacity: 1,
+    numberOfSides: 4,
+    rotation: 0,
+    radius: 5
+});
+      polygon_55.bindPopup("Bombing/Explosion");
+      polygon_55._popup.options.maxWidth = 300;
+      map.addLayer(polygon_55)
+      
+      var circle_55 = L.circle([6.054391, 121.002195], 1609.34, {
+                            color: '#000',
+                            fillColor: 'none',
+                            fillOpacity: 0.6
+                            });
+      circle_55.bindPopup("Jolo Town Hall");
+      circle_55._popup.options.maxWidth = 300;
+      map.addLayer(circle_55)
+      
+      var polygon_56 = new L.RegularPolygonMarker(new L.LatLng(5.933719, 120.999035), {
+    color: 'black',
+    opacity: 1,
+    weight: 2,
+    fillColor: '#ff0000',
+    fillOpacity: 1,
+    numberOfSides: 4,
+    rotation: 0,
+    radius: 5
+});
+      polygon_56.bindPopup("Hostage Taking (Kidnapping)");
+      polygon_56._popup.options.maxWidth = 300;
+      map.addLayer(polygon_56)
+      
+      var circle_56 = L.circle([6.054391, 121.002195], 1609.34, {
+                            color: '#000',
+                            fillColor: 'none',
+                            fillOpacity: 0.6
+                            });
+      circle_56.bindPopup("Jolo Town Hall");
+      circle_56._popup.options.maxWidth = 300;
+      map.addLayer(circle_56)
+      
+      var polygon_57 = new L.RegularPolygonMarker(new L.LatLng(5.9735, 120.9698), {
+    color: 'black',
+    opacity: 1,
+    weight: 2,
+    fillColor: '#ff0000',
+    fillOpacity: 1,
+    numberOfSides: 4,
+    rotation: 0,
+    radius: 5
+});
+      polygon_57.bindPopup("Armed Assault");
+      polygon_57._popup.options.maxWidth = 300;
+      map.addLayer(polygon_57)
+      
+      var circle_57 = L.circle([6.054391, 121.002195], 1609.34, {
+                            color: '#000',
+                            fillColor: 'none',
+                            fillOpacity: 0.6
+                            });
+      circle_57.bindPopup("Jolo Town Hall");
+      circle_57._popup.options.maxWidth = 300;
+      map.addLayer(circle_57)
+      
+      var polygon_58 = new L.RegularPolygonMarker(new L.LatLng(6.055335, 121.005136), {
+    color: 'black',
+    opacity: 1,
+    weight: 2,
+    fillColor: '#ff0000',
+    fillOpacity: 1,
+    numberOfSides: 4,
+    rotation: 0,
+    radius: 5
+});
+      polygon_58.bindPopup("Bombing/Explosion");
+      polygon_58._popup.options.maxWidth = 300;
+      map.addLayer(polygon_58)
+      
+      var circle_58 = L.circle([6.054391, 121.002195], 1609.34, {
+                            color: '#000',
+                            fillColor: 'none',
+                            fillOpacity: 0.6
+                            });
+      circle_58.bindPopup("Jolo Town Hall");
+      circle_58._popup.options.maxWidth = 300;
+      map.addLayer(circle_58)
+      
+      var polygon_59 = new L.RegularPolygonMarker(new L.LatLng(5.977477, 121.115016), {
+    color: 'black',
+    opacity: 1,
+    weight: 2,
+    fillColor: '#ff0000',
+    fillOpacity: 1,
+    numberOfSides: 4,
+    rotation: 0,
+    radius: 5
+});
+      polygon_59.bindPopup("Armed Assault");
+      polygon_59._popup.options.maxWidth = 300;
+      map.addLayer(polygon_59)
+      
+      var circle_59 = L.circle([6.054391, 121.002195], 1609.34, {
+                            color: '#000',
+                            fillColor: 'none',
+                            fillOpacity: 0.6
+                            });
+      circle_59.bindPopup("Jolo Town Hall");
+      circle_59._popup.options.maxWidth = 300;
+      map.addLayer(circle_59)
+      
+      var polygon_60 = new L.RegularPolygonMarker(new L.LatLng(6.29059, 120.5657), {
+    color: 'black',
+    opacity: 1,
+    weight: 2,
+    fillColor: '#ff0000',
+    fillOpacity: 1,
+    numberOfSides: 4,
+    rotation: 0,
+    radius: 5
+});
+      polygon_60.bindPopup("Hostage Taking (Kidnapping)");
+      polygon_60._popup.options.maxWidth = 300;
+      map.addLayer(polygon_60)
+      
+      var circle_60 = L.circle([6.054391, 121.002195], 1609.34, {
+                            color: '#000',
+                            fillColor: 'none',
+                            fillOpacity: 0.6
+                            });
+      circle_60.bindPopup("Jolo Town Hall");
+      circle_60._popup.options.maxWidth = 300;
+      map.addLayer(circle_60)
+      
+      var polygon_61 = new L.RegularPolygonMarker(new L.LatLng(6.041468, 121.015348), {
+    color: 'black',
+    opacity: 1,
+    weight: 2,
+    fillColor: '#ff0000',
+    fillOpacity: 1,
+    numberOfSides: 4,
+    rotation: 0,
+    radius: 5
+});
+      polygon_61.bindPopup("Bombing/Explosion");
+      polygon_61._popup.options.maxWidth = 300;
+      map.addLayer(polygon_61)
+      
+      var circle_61 = L.circle([6.054391, 121.002195], 1609.34, {
+                            color: '#000',
+                            fillColor: 'none',
+                            fillOpacity: 0.6
+                            });
+      circle_61.bindPopup("Jolo Town Hall");
+      circle_61._popup.options.maxWidth = 300;
+      map.addLayer(circle_61)
+      
+      var polygon_62 = new L.RegularPolygonMarker(new L.LatLng(6.049273, 121.001389), {
+    color: 'black',
+    opacity: 1,
+    weight: 2,
+    fillColor: '#ff0000',
+    fillOpacity: 1,
+    numberOfSides: 4,
+    rotation: 0,
+    radius: 5
+});
+      polygon_62.bindPopup("Bombing/Explosion");
+      polygon_62._popup.options.maxWidth = 300;
+      map.addLayer(polygon_62)
+      
+      var circle_62 = L.circle([6.054391, 121.002195], 1609.34, {
+                            color: '#000',
+                            fillColor: 'none',
+                            fillOpacity: 0.6
+                            });
+      circle_62.bindPopup("Jolo Town Hall");
+      circle_62._popup.options.maxWidth = 300;
+      map.addLayer(circle_62)
+      
+      var polygon_63 = new L.RegularPolygonMarker(new L.LatLng(6.041468, 121.015348), {
+    color: 'black',
+    opacity: 1,
+    weight: 2,
+    fillColor: '#ff0000',
+    fillOpacity: 1,
+    numberOfSides: 4,
+    rotation: 0,
+    radius: 5
+});
+      polygon_63.bindPopup("Bombing/Explosion");
+      polygon_63._popup.options.maxWidth = 300;
+      map.addLayer(polygon_63)
+      
+      var circle_63 = L.circle([6.054391, 121.002195], 1609.34, {
+                            color: '#000',
+                            fillColor: 'none',
+                            fillOpacity: 0.6
+                            });
+      circle_63.bindPopup("Jolo Town Hall");
+      circle_63._popup.options.maxWidth = 300;
+      map.addLayer(circle_63)
+      
+      var polygon_64 = new L.RegularPolygonMarker(new L.LatLng(6.05519, 121.001323), {
+    color: 'black',
+    opacity: 1,
+    weight: 2,
+    fillColor: '#ff0000',
+    fillOpacity: 1,
+    numberOfSides: 4,
+    rotation: 0,
+    radius: 5
+});
+      polygon_64.bindPopup("Bombing/Explosion");
+      polygon_64._popup.options.maxWidth = 300;
+      map.addLayer(polygon_64)
+      
+      var circle_64 = L.circle([6.054391, 121.002195], 1609.34, {
+                            color: '#000',
+                            fillColor: 'none',
+                            fillOpacity: 0.6
+                            });
+      circle_64.bindPopup("Jolo Town Hall");
+      circle_64._popup.options.maxWidth = 300;
+      map.addLayer(circle_64)
+      
+      var polygon_65 = new L.RegularPolygonMarker(new L.LatLng(6.036952, 121.037821), {
+    color: 'black',
+    opacity: 1,
+    weight: 2,
+    fillColor: '#ff0000',
+    fillOpacity: 1,
+    numberOfSides: 4,
+    rotation: 0,
+    radius: 5
+});
+      polygon_65.bindPopup("Hostage Taking (Kidnapping)");
+      polygon_65._popup.options.maxWidth = 300;
+      map.addLayer(polygon_65)
+      
+      var circle_65 = L.circle([6.054391, 121.002195], 1609.34, {
+                            color: '#000',
+                            fillColor: 'none',
+                            fillOpacity: 0.6
+                            });
+      circle_65.bindPopup("Jolo Town Hall");
+      circle_65._popup.options.maxWidth = 300;
+      map.addLayer(circle_65)
+      
+      var polygon_66 = new L.RegularPolygonMarker(new L.LatLng(6.02111, 121.16611), {
+    color: 'black',
+    opacity: 1,
+    weight: 2,
+    fillColor: '#ff0000',
+    fillOpacity: 1,
+    numberOfSides: 4,
+    rotation: 0,
+    radius: 5
+});
+      polygon_66.bindPopup("Bombing/Explosion");
+      polygon_66._popup.options.maxWidth = 300;
+      map.addLayer(polygon_66)
+      
+      var circle_66 = L.circle([6.054391, 121.002195], 1609.34, {
+                            color: '#000',
+                            fillColor: 'none',
+                            fillOpacity: 0.6
+                            });
+      circle_66.bindPopup("Jolo Town Hall");
+      circle_66._popup.options.maxWidth = 300;
+      map.addLayer(circle_66)
+      
+      var polygon_67 = new L.RegularPolygonMarker(new L.LatLng(6.066693, 121.100042), {
+    color: 'black',
+    opacity: 1,
+    weight: 2,
+    fillColor: '#ff0000',
+    fillOpacity: 1,
+    numberOfSides: 4,
+    rotation: 0,
+    radius: 5
+});
+      polygon_67.bindPopup("Bombing/Explosion");
+      polygon_67._popup.options.maxWidth = 300;
+      map.addLayer(polygon_67)
+      
+      var circle_67 = L.circle([6.054391, 121.002195], 1609.34, {
+                            color: '#000',
+                            fillColor: 'none',
+                            fillOpacity: 0.6
+                            });
+      circle_67.bindPopup("Jolo Town Hall");
+      circle_67._popup.options.maxWidth = 300;
+      map.addLayer(circle_67)
+      
+      var polygon_68 = new L.RegularPolygonMarker(new L.LatLng(6.066667, 121.1), {
+    color: 'black',
+    opacity: 1,
+    weight: 2,
+    fillColor: '#ff0000',
+    fillOpacity: 1,
+    numberOfSides: 4,
+    rotation: 0,
+    radius: 5
+});
+      polygon_68.bindPopup("Bombing/Explosion");
+      polygon_68._popup.options.maxWidth = 300;
+      map.addLayer(polygon_68)
+      
+      var circle_68 = L.circle([6.054391, 121.002195], 1609.34, {
+                            color: '#000',
+                            fillColor: 'none',
+                            fillOpacity: 0.6
+                            });
+      circle_68.bindPopup("Jolo Town Hall");
+      circle_68._popup.options.maxWidth = 300;
+      map.addLayer(circle_68)
+      
+      var polygon_69 = new L.RegularPolygonMarker(new L.LatLng(6.047365, 121.008961), {
+    color: 'black',
+    opacity: 1,
+    weight: 2,
+    fillColor: '#ff0000',
+    fillOpacity: 1,
+    numberOfSides: 4,
+    rotation: 0,
+    radius: 5
+});
+      polygon_69.bindPopup("Bombing/Explosion");
+      polygon_69._popup.options.maxWidth = 300;
+      map.addLayer(polygon_69)
+      
+      var circle_69 = L.circle([6.054391, 121.002195], 1609.34, {
+                            color: '#000',
+                            fillColor: 'none',
+                            fillOpacity: 0.6
+                            });
+      circle_69.bindPopup("Jolo Town Hall");
+      circle_69._popup.options.maxWidth = 300;
+      map.addLayer(circle_69)
+      
+      var polygon_70 = new L.RegularPolygonMarker(new L.LatLng(6.066667, 121.1), {
+    color: 'black',
+    opacity: 1,
+    weight: 2,
+    fillColor: '#ff0000',
+    fillOpacity: 1,
+    numberOfSides: 4,
+    rotation: 0,
+    radius: 5
+});
+      polygon_70.bindPopup("Hostage Taking (Kidnapping)");
+      polygon_70._popup.options.maxWidth = 300;
+      map.addLayer(polygon_70)
+      
+      var circle_70 = L.circle([6.054391, 121.002195], 1609.34, {
+                            color: '#000',
+                            fillColor: 'none',
+                            fillOpacity: 0.6
+                            });
+      circle_70.bindPopup("Jolo Town Hall");
+      circle_70._popup.options.maxWidth = 300;
+      map.addLayer(circle_70)
+      
+      var polygon_71 = new L.RegularPolygonMarker(new L.LatLng(6.047225, 121.009043), {
+    color: 'black',
+    opacity: 1,
+    weight: 2,
+    fillColor: '#ff0000',
+    fillOpacity: 1,
+    numberOfSides: 4,
+    rotation: 0,
+    radius: 5
+});
+      polygon_71.bindPopup("Hostage Taking (Kidnapping)");
+      polygon_71._popup.options.maxWidth = 300;
+      map.addLayer(polygon_71)
+      
+      var circle_71 = L.circle([6.054391, 121.002195], 1609.34, {
+                            color: '#000',
+                            fillColor: 'none',
+                            fillOpacity: 0.6
+                            });
+      circle_71.bindPopup("Jolo Town Hall");
+      circle_71._popup.options.maxWidth = 300;
+      map.addLayer(circle_71)
+      
+      var polygon_72 = new L.RegularPolygonMarker(new L.LatLng(5.969181, 121.125214), {
+    color: 'black',
+    opacity: 1,
+    weight: 2,
+    fillColor: '#ff0000',
+    fillOpacity: 1,
+    numberOfSides: 4,
+    rotation: 0,
+    radius: 5
+});
+      polygon_72.bindPopup("Hostage Taking (Kidnapping)");
+      polygon_72._popup.options.maxWidth = 300;
+      map.addLayer(polygon_72)
+      
+      var circle_72 = L.circle([6.054391, 121.002195], 1609.34, {
+                            color: '#000',
+                            fillColor: 'none',
+                            fillOpacity: 0.6
+                            });
+      circle_72.bindPopup("Jolo Town Hall");
+      circle_72._popup.options.maxWidth = 300;
+      map.addLayer(circle_72)
+      
+      var polygon_73 = new L.RegularPolygonMarker(new L.LatLng(6.053204, 121.000328), {
+    color: 'black',
+    opacity: 1,
+    weight: 2,
+    fillColor: '#ff0000',
+    fillOpacity: 1,
+    numberOfSides: 4,
+    rotation: 0,
+    radius: 5
+});
+      polygon_73.bindPopup("Hostage Taking (Kidnapping)");
+      polygon_73._popup.options.maxWidth = 300;
+      map.addLayer(polygon_73)
+      
+      var circle_73 = L.circle([6.054391, 121.002195], 1609.34, {
+                            color: '#000',
+                            fillColor: 'none',
+                            fillOpacity: 0.6
+                            });
+      circle_73.bindPopup("Jolo Town Hall");
+      circle_73._popup.options.maxWidth = 300;
+      map.addLayer(circle_73)
+      
+      var polygon_74 = new L.RegularPolygonMarker(new L.LatLng(6.047365, 121.008961), {
+    color: 'black',
+    opacity: 1,
+    weight: 2,
+    fillColor: '#ff0000',
+    fillOpacity: 1,
+    numberOfSides: 4,
+    rotation: 0,
+    radius: 5
+});
+      polygon_74.bindPopup("Armed Assault");
+      polygon_74._popup.options.maxWidth = 300;
+      map.addLayer(polygon_74)
+      
+      var circle_74 = L.circle([6.054391, 121.002195], 1609.34, {
+                            color: '#000',
+                            fillColor: 'none',
+                            fillOpacity: 0.6
+                            });
+      circle_74.bindPopup("Jolo Town Hall");
+      circle_74._popup.options.maxWidth = 300;
+      map.addLayer(circle_74)
+      
+      var polygon_75 = new L.RegularPolygonMarker(new L.LatLng(6.047367, 121.008961), {
+    color: 'black',
+    opacity: 1,
+    weight: 2,
+    fillColor: '#ff0000',
+    fillOpacity: 1,
+    numberOfSides: 4,
+    rotation: 0,
+    radius: 5
+});
+      polygon_75.bindPopup("Hostage Taking (Kidnapping)");
+      polygon_75._popup.options.maxWidth = 300;
+      map.addLayer(polygon_75)
+      
+      var circle_75 = L.circle([6.054391, 121.002195], 1609.34, {
+                            color: '#000',
+                            fillColor: 'none',
+                            fillOpacity: 0.6
+                            });
+      circle_75.bindPopup("Jolo Town Hall");
+      circle_75._popup.options.maxWidth = 300;
+      map.addLayer(circle_75)
+      
+      var polygon_76 = new L.RegularPolygonMarker(new L.LatLng(6.068482, 121.034231), {
+    color: 'black',
+    opacity: 1,
+    weight: 2,
+    fillColor: '#ff0000',
+    fillOpacity: 1,
+    numberOfSides: 4,
+    rotation: 0,
+    radius: 5
+});
+      polygon_76.bindPopup("Hostage Taking (Kidnapping)");
+      polygon_76._popup.options.maxWidth = 300;
+      map.addLayer(polygon_76)
+      
+      var circle_76 = L.circle([6.054391, 121.002195], 1609.34, {
+                            color: '#000',
+                            fillColor: 'none',
+                            fillOpacity: 0.6
+                            });
+      circle_76.bindPopup("Jolo Town Hall");
+      circle_76._popup.options.maxWidth = 300;
+      map.addLayer(circle_76)
+      
+      var polygon_77 = new L.RegularPolygonMarker(new L.LatLng(5.968027, 121.035239), {
+    color: 'black',
+    opacity: 1,
+    weight: 2,
+    fillColor: '#ff0000',
+    fillOpacity: 1,
+    numberOfSides: 4,
+    rotation: 0,
+    radius: 5
+});
+      polygon_77.bindPopup("Armed Assault");
+      polygon_77._popup.options.maxWidth = 300;
+      map.addLayer(polygon_77)
+      
+      var circle_77 = L.circle([6.054391, 121.002195], 1609.34, {
+                            color: '#000',
+                            fillColor: 'none',
+                            fillOpacity: 0.6
+                            });
+      circle_77.bindPopup("Jolo Town Hall");
+      circle_77._popup.options.maxWidth = 300;
+      map.addLayer(circle_77)
+      
+      var polygon_78 = new L.RegularPolygonMarker(new L.LatLng(6.066667, 121.1), {
+    color: 'black',
+    opacity: 1,
+    weight: 2,
+    fillColor: '#ff0000',
+    fillOpacity: 1,
+    numberOfSides: 4,
+    rotation: 0,
+    radius: 5
+});
+      polygon_78.bindPopup("Bombing/Explosion");
+      polygon_78._popup.options.maxWidth = 300;
+      map.addLayer(polygon_78)
+      
+      var circle_78 = L.circle([6.054391, 121.002195], 1609.34, {
+                            color: '#000',
+                            fillColor: 'none',
+                            fillOpacity: 0.6
+                            });
+      circle_78.bindPopup("Jolo Town Hall");
+      circle_78._popup.options.maxWidth = 300;
+      map.addLayer(circle_78)
+      
+      var polygon_79 = new L.RegularPolygonMarker(new L.LatLng(6.047364, 121.008961), {
+    color: 'black',
+    opacity: 1,
+    weight: 2,
+    fillColor: '#ff0000',
+    fillOpacity: 1,
+    numberOfSides: 4,
+    rotation: 0,
+    radius: 5
+});
+      polygon_79.bindPopup("Bombing/Explosion");
+      polygon_79._popup.options.maxWidth = 300;
+      map.addLayer(polygon_79)
+      
+      var circle_79 = L.circle([6.054391, 121.002195], 1609.34, {
+                            color: '#000',
+                            fillColor: 'none',
+                            fillOpacity: 0.6
+                            });
+      circle_79.bindPopup("Jolo Town Hall");
+      circle_79._popup.options.maxWidth = 300;
+      map.addLayer(circle_79)
+      
+      var polygon_80 = new L.RegularPolygonMarker(new L.LatLng(5.544054, 120.815636), {
+    color: 'black',
+    opacity: 1,
+    weight: 2,
+    fillColor: '#ff0000',
+    fillOpacity: 1,
+    numberOfSides: 4,
+    rotation: 0,
+    radius: 5
+});
+      polygon_80.bindPopup("Hostage Taking (Kidnapping)");
+      polygon_80._popup.options.maxWidth = 300;
+      map.addLayer(polygon_80)
+      
+      var circle_80 = L.circle([6.054391, 121.002195], 1609.34, {
+                            color: '#000',
+                            fillColor: 'none',
+                            fillOpacity: 0.6
+                            });
+      circle_80.bindPopup("Jolo Town Hall");
+      circle_80._popup.options.maxWidth = 300;
+      map.addLayer(circle_80)
+      
+      var polygon_81 = new L.RegularPolygonMarker(new L.LatLng(6.066667, 121.1), {
+    color: 'black',
+    opacity: 1,
+    weight: 2,
+    fillColor: '#ff0000',
+    fillOpacity: 1,
+    numberOfSides: 4,
+    rotation: 0,
+    radius: 5
+});
+      polygon_81.bindPopup("Hostage Taking (Kidnapping)");
+      polygon_81._popup.options.maxWidth = 300;
+      map.addLayer(polygon_81)
+      
+      var circle_81 = L.circle([6.054391, 121.002195], 1609.34, {
+                            color: '#000',
+                            fillColor: 'none',
+                            fillOpacity: 0.6
+                            });
+      circle_81.bindPopup("Jolo Town Hall");
+      circle_81._popup.options.maxWidth = 300;
+      map.addLayer(circle_81)
+      
+      var polygon_82 = new L.RegularPolygonMarker(new L.LatLng(6.066667, 121.1), {
+    color: 'black',
+    opacity: 1,
+    weight: 2,
+    fillColor: '#ff0000',
+    fillOpacity: 1,
+    numberOfSides: 4,
+    rotation: 0,
+    radius: 5
+});
+      polygon_82.bindPopup("Hostage Taking (Kidnapping)");
+      polygon_82._popup.options.maxWidth = 300;
+      map.addLayer(polygon_82)
+      
+      var circle_82 = L.circle([6.054391, 121.002195], 1609.34, {
+                            color: '#000',
+                            fillColor: 'none',
+                            fillOpacity: 0.6
+                            });
+      circle_82.bindPopup("Jolo Town Hall");
+      circle_82._popup.options.maxWidth = 300;
+      map.addLayer(circle_82)
+      
+      var polygon_83 = new L.RegularPolygonMarker(new L.LatLng(6.041468, 121.015348), {
+    color: 'black',
+    opacity: 1,
+    weight: 2,
+    fillColor: '#ff0000',
+    fillOpacity: 1,
+    numberOfSides: 4,
+    rotation: 0,
+    radius: 5
+});
+      polygon_83.bindPopup("Bombing/Explosion");
+      polygon_83._popup.options.maxWidth = 300;
+      map.addLayer(polygon_83)
+      
+      var circle_83 = L.circle([6.054391, 121.002195], 1609.34, {
+                            color: '#000',
+                            fillColor: 'none',
+                            fillOpacity: 0.6
+                            });
+      circle_83.bindPopup("Jolo Town Hall");
+      circle_83._popup.options.maxWidth = 300;
+      map.addLayer(circle_83)
+      
+      var polygon_84 = new L.RegularPolygonMarker(new L.LatLng(6.066456, 121.100121), {
+    color: 'black',
+    opacity: 1,
+    weight: 2,
+    fillColor: '#ff0000',
+    fillOpacity: 1,
+    numberOfSides: 4,
+    rotation: 0,
+    radius: 5
+});
+      polygon_84.bindPopup("Hostage Taking (Kidnapping)");
+      polygon_84._popup.options.maxWidth = 300;
+      map.addLayer(polygon_84)
+      
+      var circle_84 = L.circle([6.054391, 121.002195], 1609.34, {
+                            color: '#000',
+                            fillColor: 'none',
+                            fillOpacity: 0.6
+                            });
+      circle_84.bindPopup("Jolo Town Hall");
+      circle_84._popup.options.maxWidth = 300;
+      map.addLayer(circle_84)
+      
+      var polygon_85 = new L.RegularPolygonMarker(new L.LatLng(6.005255, 121.308525), {
+    color: 'black',
+    opacity: 1,
+    weight: 2,
+    fillColor: '#ff0000',
+    fillOpacity: 1,
+    numberOfSides: 4,
+    rotation: 0,
+    radius: 5
+});
+      polygon_85.bindPopup("Armed Assault");
+      polygon_85._popup.options.maxWidth = 300;
+      map.addLayer(polygon_85)
+      
+      var circle_85 = L.circle([6.054391, 121.002195], 1609.34, {
+                            color: '#000',
+                            fillColor: 'none',
+                            fillOpacity: 0.6
+                            });
+      circle_85.bindPopup("Jolo Town Hall");
+      circle_85._popup.options.maxWidth = 300;
+      map.addLayer(circle_85)
+      
+      var polygon_86 = new L.RegularPolygonMarker(new L.LatLng(5.913349, 120.907287), {
+    color: 'black',
+    opacity: 1,
+    weight: 2,
+    fillColor: '#ff0000',
+    fillOpacity: 1,
+    numberOfSides: 4,
+    rotation: 0,
+    radius: 5
+});
+      polygon_86.bindPopup("Armed Assault");
+      polygon_86._popup.options.maxWidth = 300;
+      map.addLayer(polygon_86)
+      
+      var circle_86 = L.circle([6.054391, 121.002195], 1609.34, {
+                            color: '#000',
+                            fillColor: 'none',
+                            fillOpacity: 0.6
+                            });
+      circle_86.bindPopup("Jolo Town Hall");
+      circle_86._popup.options.maxWidth = 300;
+      map.addLayer(circle_86)
+      
+      var polygon_87 = new L.RegularPolygonMarker(new L.LatLng(5.975499, 121.144835), {
+    color: 'black',
+    opacity: 1,
+    weight: 2,
+    fillColor: '#ff0000',
+    fillOpacity: 1,
+    numberOfSides: 4,
+    rotation: 0,
+    radius: 5
+});
+      polygon_87.bindPopup("Armed Assault");
+      polygon_87._popup.options.maxWidth = 300;
+      map.addLayer(polygon_87)
+      
+      var circle_87 = L.circle([6.054391, 121.002195], 1609.34, {
+                            color: '#000',
+                            fillColor: 'none',
+                            fillOpacity: 0.6
+                            });
+      circle_87.bindPopup("Jolo Town Hall");
+      circle_87._popup.options.maxWidth = 300;
+      map.addLayer(circle_87)
+      
+      var polygon_88 = new L.RegularPolygonMarker(new L.LatLng(6.045634, 121.008976), {
+    color: 'black',
+    opacity: 1,
+    weight: 2,
+    fillColor: '#ff0000',
+    fillOpacity: 1,
+    numberOfSides: 4,
+    rotation: 0,
+    radius: 5
+});
+      polygon_88.bindPopup("Hostage Taking (Kidnapping)");
+      polygon_88._popup.options.maxWidth = 300;
+      map.addLayer(polygon_88)
+      
+      var circle_88 = L.circle([6.054391, 121.002195], 1609.34, {
+                            color: '#000',
+                            fillColor: 'none',
+                            fillOpacity: 0.6
+                            });
+      circle_88.bindPopup("Jolo Town Hall");
+      circle_88._popup.options.maxWidth = 300;
+      map.addLayer(circle_88)
+      
+      var polygon_89 = new L.RegularPolygonMarker(new L.LatLng(6.067685, 121.099724), {
+    color: 'black',
+    opacity: 1,
+    weight: 2,
+    fillColor: '#ff0000',
+    fillOpacity: 1,
+    numberOfSides: 4,
+    rotation: 0,
+    radius: 5
+});
+      polygon_89.bindPopup("Hostage Taking (Kidnapping)");
+      polygon_89._popup.options.maxWidth = 300;
+      map.addLayer(polygon_89)
+      
+      var circle_89 = L.circle([6.054391, 121.002195], 1609.34, {
+                            color: '#000',
+                            fillColor: 'none',
+                            fillOpacity: 0.6
+                            });
+      circle_89.bindPopup("Jolo Town Hall");
+      circle_89._popup.options.maxWidth = 300;
+      map.addLayer(circle_89)
+      
+      var polygon_90 = new L.RegularPolygonMarker(new L.LatLng(6.053554, 121.059576), {
+    color: 'black',
+    opacity: 1,
+    weight: 2,
+    fillColor: '#ff0000',
+    fillOpacity: 1,
+    numberOfSides: 4,
+    rotation: 0,
+    radius: 5
+});
+      polygon_90.bindPopup("Hostage Taking (Kidnapping)");
+      polygon_90._popup.options.maxWidth = 300;
+      map.addLayer(polygon_90)
+      
+      var circle_90 = L.circle([6.054391, 121.002195], 1609.34, {
+                            color: '#000',
+                            fillColor: 'none',
+                            fillOpacity: 0.6
+                            });
+      circle_90.bindPopup("Jolo Town Hall");
+      circle_90._popup.options.maxWidth = 300;
+      map.addLayer(circle_90)
+      
+      var polygon_91 = new L.RegularPolygonMarker(new L.LatLng(6.050894, 120.993495), {
+    color: 'black',
+    opacity: 1,
+    weight: 2,
+    fillColor: '#ff0000',
+    fillOpacity: 1,
+    numberOfSides: 4,
+    rotation: 0,
+    radius: 5
+});
+      polygon_91.bindPopup("Hostage Taking (Kidnapping)");
+      polygon_91._popup.options.maxWidth = 300;
+      map.addLayer(polygon_91)
+      
+      var circle_91 = L.circle([6.054391, 121.002195], 1609.34, {
+                            color: '#000',
+                            fillColor: 'none',
+                            fillOpacity: 0.6
+                            });
+      circle_91.bindPopup("Jolo Town Hall");
+      circle_91._popup.options.maxWidth = 300;
+      map.addLayer(circle_91)
+      
+      var polygon_92 = new L.RegularPolygonMarker(new L.LatLng(6.066546, 121.100221), {
+    color: 'black',
+    opacity: 1,
+    weight: 2,
+    fillColor: '#ff0000',
+    fillOpacity: 1,
+    numberOfSides: 4,
+    rotation: 0,
+    radius: 5
+});
+      polygon_92.bindPopup("Hostage Taking (Kidnapping)");
+      polygon_92._popup.options.maxWidth = 300;
+      map.addLayer(polygon_92)
+      
+      var circle_92 = L.circle([6.054391, 121.002195], 1609.34, {
+                            color: '#000',
+                            fillColor: 'none',
+                            fillOpacity: 0.6
+                            });
+      circle_92.bindPopup("Jolo Town Hall");
+      circle_92._popup.options.maxWidth = 300;
+      map.addLayer(circle_92)
+      
+      var polygon_93 = new L.RegularPolygonMarker(new L.LatLng(6.027457, 121.046), {
+    color: 'black',
+    opacity: 1,
+    weight: 2,
+    fillColor: '#ff0000',
+    fillOpacity: 1,
+    numberOfSides: 4,
+    rotation: 0,
+    radius: 5
+});
+      polygon_93.bindPopup("Armed Assault");
+      polygon_93._popup.options.maxWidth = 300;
+      map.addLayer(polygon_93)
+      
+      var circle_93 = L.circle([6.054391, 121.002195], 1609.34, {
+                            color: '#000',
+                            fillColor: 'none',
+                            fillOpacity: 0.6
+                            });
+      circle_93.bindPopup("Jolo Town Hall");
+      circle_93._popup.options.maxWidth = 300;
+      map.addLayer(circle_93)
+      
+      var polygon_94 = new L.RegularPolygonMarker(new L.LatLng(6.053166, 121.042788), {
+    color: 'black',
+    opacity: 1,
+    weight: 2,
+    fillColor: '#ff0000',
+    fillOpacity: 1,
+    numberOfSides: 4,
+    rotation: 0,
+    radius: 5
+});
+      polygon_94.bindPopup("Armed Assault");
+      polygon_94._popup.options.maxWidth = 300;
+      map.addLayer(polygon_94)
+      
+      var circle_94 = L.circle([6.054391, 121.002195], 1609.34, {
+                            color: '#000',
+                            fillColor: 'none',
+                            fillOpacity: 0.6
+                            });
+      circle_94.bindPopup("Jolo Town Hall");
+      circle_94._popup.options.maxWidth = 300;
+      map.addLayer(circle_94)
+      
+      var polygon_95 = new L.RegularPolygonMarker(new L.LatLng(6.077377, 121.082137), {
+    color: 'black',
+    opacity: 1,
+    weight: 2,
+    fillColor: '#ff0000',
+    fillOpacity: 1,
+    numberOfSides: 4,
+    rotation: 0,
+    radius: 5
+});
+      polygon_95.bindPopup("Armed Assault");
+      polygon_95._popup.options.maxWidth = 300;
+      map.addLayer(polygon_95)
+      
+      var circle_95 = L.circle([6.054391, 121.002195], 1609.34, {
+                            color: '#000',
+                            fillColor: 'none',
+                            fillOpacity: 0.6
+                            });
+      circle_95.bindPopup("Jolo Town Hall");
+      circle_95._popup.options.maxWidth = 300;
+      map.addLayer(circle_95)
+      
+      var polygon_96 = new L.RegularPolygonMarker(new L.LatLng(5.989123, 120.953132), {
+    color: 'black',
+    opacity: 1,
+    weight: 2,
+    fillColor: '#ff0000',
+    fillOpacity: 1,
+    numberOfSides: 4,
+    rotation: 0,
+    radius: 5
+});
+      polygon_96.bindPopup("Hostage Taking (Kidnapping)");
+      polygon_96._popup.options.maxWidth = 300;
+      map.addLayer(polygon_96)
+      
+      var circle_96 = L.circle([6.054391, 121.002195], 1609.34, {
+                            color: '#000',
+                            fillColor: 'none',
+                            fillOpacity: 0.6
+                            });
+      circle_96.bindPopup("Jolo Town Hall");
+      circle_96._popup.options.maxWidth = 300;
+      map.addLayer(circle_96)
+      
+      var polygon_97 = new L.RegularPolygonMarker(new L.LatLng(6.046389, 121.078056), {
+    color: 'black',
+    opacity: 1,
+    weight: 2,
+    fillColor: '#ff0000',
+    fillOpacity: 1,
+    numberOfSides: 4,
+    rotation: 0,
+    radius: 5
+});
+      polygon_97.bindPopup("Bombing/Explosion");
+      polygon_97._popup.options.maxWidth = 300;
+      map.addLayer(polygon_97)
+      
+      var circle_97 = L.circle([6.054391, 121.002195], 1609.34, {
+                            color: '#000',
+                            fillColor: 'none',
+                            fillOpacity: 0.6
+                            });
+      circle_97.bindPopup("Jolo Town Hall");
+      circle_97._popup.options.maxWidth = 300;
+      map.addLayer(circle_97)
+      
+      var polygon_98 = new L.RegularPolygonMarker(new L.LatLng(6.019005, 121.121649), {
+    color: 'black',
+    opacity: 1,
+    weight: 2,
+    fillColor: '#ff0000',
+    fillOpacity: 1,
+    numberOfSides: 4,
+    rotation: 0,
+    radius: 5
+});
+      polygon_98.bindPopup("Hostage Taking (Kidnapping)");
+      polygon_98._popup.options.maxWidth = 300;
+      map.addLayer(polygon_98)
+      
+      var circle_98 = L.circle([6.054391, 121.002195], 1609.34, {
+                            color: '#000',
+                            fillColor: 'none',
+                            fillOpacity: 0.6
+                            });
+      circle_98.bindPopup("Jolo Town Hall");
+      circle_98._popup.options.maxWidth = 300;
+      map.addLayer(circle_98)
+      
+      var polygon_99 = new L.RegularPolygonMarker(new L.LatLng(5.933025, 121.100058), {
+    color: 'black',
+    opacity: 1,
+    weight: 2,
+    fillColor: '#ff0000',
+    fillOpacity: 1,
+    numberOfSides: 4,
+    rotation: 0,
+    radius: 5
+});
+      polygon_99.bindPopup("Armed Assault");
+      polygon_99._popup.options.maxWidth = 300;
+      map.addLayer(polygon_99)
+      
+      var circle_99 = L.circle([6.054391, 121.002195], 1609.34, {
+                            color: '#000',
+                            fillColor: 'none',
+                            fillOpacity: 0.6
+                            });
+      circle_99.bindPopup("Jolo Town Hall");
+      circle_99._popup.options.maxWidth = 300;
+      map.addLayer(circle_99)
+      
+      var polygon_100 = new L.RegularPolygonMarker(new L.LatLng(6.084487, 121.085603), {
+    color: 'black',
+    opacity: 1,
+    weight: 2,
+    fillColor: '#ff0000',
+    fillOpacity: 1,
+    numberOfSides: 4,
+    rotation: 0,
+    radius: 5
+});
+      polygon_100.bindPopup("Hostage Taking (Kidnapping)");
+      polygon_100._popup.options.maxWidth = 300;
+      map.addLayer(polygon_100)
+      
+      var circle_100 = L.circle([6.054391, 121.002195], 1609.34, {
+                            color: '#000',
+                            fillColor: 'none',
+                            fillOpacity: 0.6
+                            });
+      circle_100.bindPopup("Jolo Town Hall");
+      circle_100._popup.options.maxWidth = 300;
+      map.addLayer(circle_100)
+      
+
+      
+
+      
+
+      
+
+      
+
+
+
+   </script>
+
+</body>
