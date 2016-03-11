@@ -1,3 +1,10 @@
+<!DOCTYPE html>
+<html>
+
+<body>
+
+<script>
+
 function onEachFeature(feature, layer) {
         layer.bindPopup("<h1>"+feature.properties.name+"</h1><p>"+feature.properties.caption+"</p>"+feature.properties.img);
 }
@@ -15,7 +22,7 @@ var myGeoJSON = {
 		{'type':'Feature', 
 	'properties':{
 		'name':'Union Station',
-		‘caption’:'This is what the CN Tower looks like from Union Station',
+		‘caption’:'This is what the CN (Canadian National) Tower looks like from Union Station',
 		‘img’:’<img src=”https://scontent.xx.fbcdn.net/hphotos-xpt1/t31.0-8/12698396_183542615342777_3320337271591967269_o.jpg”/>’},
 		'geometry':{'type':'Point','coordinates':[43.64475,-79.3822]}},
 {
@@ -84,3 +91,6 @@ var myGeoJSON = {
 }
 
 	]};
+</script>
+</body>
+</html>
