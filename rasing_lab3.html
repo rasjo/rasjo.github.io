@@ -1,0 +1,140 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+
+<title> Toronto, ON, Canada </title>
+
+<link rel="stylesheet" href="http://cdn.leafletjs.com/leaflet/v0.7.7/leaflet.css" />
+<script src="http://cdn.leafletjs.com/leaflet/v0.7.7/leaflet.js"></script>
+</head>
+
+<style>
+body{background:#dbdbdb; 
+font-family: cambria;
+font-size:28px;}
+</style>
+
+<body>
+
+<center>Toronto Walking Distance Map</center>
+<div style="display:flex;justify-content:center;align-items:center;">
+<div id='map' style="height:1000px; width:2000px"></div>
+
+<script>
+///// osm tile change to stamen toner-hybrid
+///// geojson
+///// rasjo  11mar2016
+var tonerhyUrl = "http://tile.stamen.com/toner-hybrid/{z}/{x}/{y}.png";
+var url = tonerhyUrl.replace(/({[A-Z]})/g, function(s) {
+return s.toLowerCase();
+});
+var myGeoJSON = [
+{
+      "type": "FeatureCollection",
+      "features": [
+   
+{
+      "type": "Feature",
+      "properties": {
+      "name": "<b>Union Station</b><br>This is what the CN (Canadian National) Tower looks like from Union Station",
+      "img": "<img src='https://scontent.xx.fbcdn.net/hphotos-xpt1/t31.0-8/12698396_183542615342777_3320337271591967269_o.jpg' width=250 height=290 />"},
+      "geometry": {
+      "type": "Point",
+      "coordinates": [-79.3822, 43.64475]}},
+{
+      "type": "Feature",
+      "properties": {
+      "name": "<b>Strathcona Hotel</b><br>I stayed in this hotel for 3 days.",
+      "img": "<img src='https://scontent.xx.fbcdn.net/hphotos-xpt1/t31.0-8/12640235_183535172010188_1786731309883747152_o.jpg' height=250 width=290 />"},
+      "geometry": {
+      "type": "Point",
+      "coordinates": [-79.383115, 43.646242]}},
+{
+      "type": "Feature",
+      "properties": {
+      "name": "<b>Old City Hall</b><br>Old City Hall is next to many shopping malls and across the street is the modern City Hall.",
+      "img":  "<img src='https://pbs.twimg.com/media/CXlx91MUEAA5y5M.jpg' height=290 width=200/>"},
+      "geometry": {
+      "type": "Point",
+      "coordinates": [-79.381659, 43.652251]}},
+{
+      "type": "Feature",
+      "properties": {
+      "name": "<b>Chinatown</b><br>Chinatown has many shops and plenty of restaurans flooded by locals, university students, and tourists.",
+      "img":  "<img src='https://scontent.xx.fbcdn.net/hphotos-xpt1/t31.0-8/12694660_183535242010181_4126978349335019476_o.jpg' height=200 width=250 />"},
+      "geometry": {
+      "type": "Point",
+      "coordinates": [-79.397465, 43.65187]}},
+{
+      "type": "Feature",
+      "properties": {
+      "name": "<b>University of Toronto</b><br>University of Toronto has beautiful architecture.",
+      "img":  "<img src='https://scontent.xx.fbcdn.net/hphotos-xlp1/l/t31.0-8/12672001_183535298676842_5888165865527703318_o.jpg' height=150 width=290 />"},
+      "geometry": {
+      "type": "Point",
+      "coordinates": [-79.395467, 43.66246]}},
+{
+      "type": "Feature",
+      "properties": {
+      "name": "<b>U of T Bookstore</b><br>Bookstore Humor.",
+      "img":  "<img src='https://scontent.xx.fbcdn.net/hphotos-xfl1/t31.0-8/12695057_183542612009444_8486115781740257107_o.jpg' height=300 width=250 />"},
+      "geometry": {
+      "type": "Point",
+      "coordinates": [-79.396643, 43.658822]}},
+{
+      "type": "Feature",
+      "properties": {
+      "name": "<b>CN Tower</b><br>The view from the CN (Canadian National) Tower overlooking the city.",
+      "img":  "<img src='https://scontent-atl3-1.xx.fbcdn.net/hphotos-xfa1/t31.0-8/12440390_162926794071026_365281823354817947_o.jpg' height=200 width=290 />"},
+      "geometry": {
+      "type": "Point",
+      "coordinates": [-79.38708, 43.642585]}},
+{
+      "type": "Feature",
+      "properties": {
+      "name": "<b>City Hall</b><br>Fireworks at City Hall for New Year\'s",
+      "img":  ""},
+      "geometry": {
+      "type": "Point",
+      "coordinates": [-79.382929, 43.653457]}},
+{
+      "type": "Feature",
+      "properties": {
+      "name": "<b>Casa Loma</b><br>Casa Loma, home to Sir Henry Pellatt, a Canadian financier, later turned into a luxury hotel, and then became a museum.",
+      "img":  "<img src='https://scontent.xx.fbcdn.net/hphotos-xap1/t31.0-8/12525491_183535398676832_3266398381754332307_o.jpg' height=200, width=290 />"},
+      "geometry": {
+      "type": "Point",
+      "coordinates": [-79.409363, 43.678064]}},
+{
+      "type": "Feature",
+      "properties": {
+      "name": "<b>Ripley's Aquarium</b><br>The sharks were part of the Dangerous Lagoon. Other sharks spotted here included the low-laying sandbar sharks towards the bottom of the aquarium.",
+      "img":  "<img src='https://scontent.xx.fbcdn.net/hphotos-xfl1/t31.0-8/12698321_183535405343498_4643251889019397941_o.jpg' height=200, width=290 />"},
+      "geometry": {
+      "type": "Point",
+      "coordinates": [-79.386157, 43.642438]}},
+]}];
+  
+  
+function onEachFeature(feature, layer) 
+{
+popupOptions = {maxWidth: 300};
+if (feature.properties && feature.properties.name) {
+layer.bindPopup(feature.properties.img + "<br>" + feature.properties.name, popupOptions);}}
+var basemap = L.tileLayer(url, {
+    subdomains: ['','a.','b.','c.','d.'],
+    minZoom: 0,
+    maxZoom: 17,
+    type: 'png',  
+});
+var map = L.map('map')
+	.addLayer(basemap)
+	.setView([43.6549179,-79.390189], 14)
+	L.geoJson(myGeoJSON, {
+	 onEachFeature: onEachFeature
+	}).addTo(map);
+  
+	</script>
+</body>
+</html>
