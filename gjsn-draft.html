@@ -5,16 +5,10 @@
 
 <script>
 
-function onEachFeature(feature, layer) {
-        layer.bindPopup("<h1>"+feature.properties.name+"</h1><p>"+feature.properties.caption+"</p>"+feature.properties.img);
-}
-
-
-	var map = L.map('map').setView([43.64475,-79.3822], 13);
-	L.tileLayer('http://{s}.tile.osm.org/{z}/{x}/{y}.png', {
-	attribution: '&copy; <a href="http://osm.org/copyright">OpenStreetMap</a> contributors'
-	}).addTo(map);
-}
+var OpenStreetMap_HOT = L.tileLayer('http://{s}.tile.openstreetmap.fr/hot/{z}/{x}/{y}.png', {
+	maxZoom: 13,
+	attribution: '&copy; <a href="http://www.openstreetmap.org/copyright">OpenStreetMap</a>, Tiles courtesy of <a href="http://hot.openstreetmap.org/" target="_blank">Humanitarian OpenStreetMap Team</a>'
+});
 
 var myGeoJSON = {
 	‘type’ : ‘FeatureCollection’,
