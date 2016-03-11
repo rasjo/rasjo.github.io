@@ -22,19 +22,14 @@ font-size:28px;}
 <div id='map' style="height:1000px; width:2000px"></div>
 
 <script>
-
 ///// osm tile change to stamen toner-hybrid
 ///// geojson
 ///// rasjo  11mar2016
-
 var tonerhyUrl = "http://tile.stamen.com/toner-hybrid/{z}/{x}/{y}.png";
 var url = tonerhyUrl.replace(/({[A-Z]})/g, function(s) {
 return s.toLowerCase();
 });
-
-
 var myGeoJSON = [
-
 {
       "type": "FeatureCollection",
       "features": [
@@ -47,7 +42,6 @@ var myGeoJSON = [
       "geometry": {
       "type": "Point",
       "coordinates": [-79.3822, 43.64475]}},
-
 {
       "type": "Feature",
       "properties": {
@@ -60,7 +54,7 @@ var myGeoJSON = [
       "type": "Feature",
       "properties": {
       "name": "<b>Old City Hall</b><br>Old City Hall is next to many shopping malls and across the street is the modern City Hall.",
-      "img":  "<img src='https://pbs.twimg.com/media/CXlx91MUEAA5y5M.jpg' height=200 width=290/>"},
+      "img":  "<img src='https://pbs.twimg.com/media/CXlx91MUEAA5y5M.jpg' height=290 width=200/>"},
       "geometry": {
       "type": "Point",
       "coordinates": [-79.381659, 43.652251]}},
@@ -124,18 +118,15 @@ var myGeoJSON = [
   
   
 function onEachFeature(feature, layer) 
-
 {
 popupOptions = {maxWidth: 300};
 if (feature.properties && feature.properties.name) {
 layer.bindPopup(feature.properties.img + "<br>" + feature.properties.name, popupOptions);}}
-
 var basemap = L.tileLayer(url, {
     subdomains: ['','a.','b.','c.','d.'],
     minZoom: 0,
     maxZoom: 17,
     type: 'png',  
-
 });
 var map = L.map('map')
 	.addLayer(basemap)
