@@ -33,79 +33,80 @@ return s.toLowerCase(); {
 	attribution: '&copy; <a href="http://www.openstreetmap.org/copyright">OpenStreetMap</a>, Tiles courtesy of <a href="http://hot.openstreetmap.org/" target="_blank">Humanitarian OpenStreetMap Team</a>'
 });
 
-var myGeoJSON = {
+var myGeoJSON = [
+{
 	‘type’ : ‘FeatureCollection’,
 	‘features’ : [
 
-		{'type':'Feature', 
+{	'type':'Feature', 
 	'properties':{
-		'name':'Union Station',
-		‘caption’:'This is what the CN (Canadian National) Tower looks like from Union Station',
-		‘img’:’<img src=”https://scontent.xx.fbcdn.net/hphotos-xpt1/t31.0-8/12698396_183542615342777_3320337271591967269_o.jpg”/>’},
-		'geometry':{'type':'Point','coordinates':[43.64475,-79.3822]}},
+	'name':'Union Station',
+	‘caption’:'This is what the CN (Canadian National) Tower looks like from Union Station',
+	‘img’:’<img src=”https://scontent.xx.fbcdn.net/hphotos-xpt1/t31.0-8/12698396_183542615342777_3320337271591967269_o.jpg”/>’},
+	'geometry':{'type':'Point','coordinates':[43.64475,-79.3822]}},
 },
-	'type':'Feature',
-	 'properties':{
-		'name':'Strathcona Hotel',
-		‘caption’:'I stayed in this hotel for 3 days',
-		‘img’:’<img src=”https://scontent.xx.fbcdn.net/hphotos-xpt1/t31.0-8/12640235_183535172010188_1786731309883747152_o.jpg”/>’},
-		'geometry':{'type':'Point','coordinates':[43.646242,-79.383115]}}
+{	'type':'Feature',
+	'properties':{
+	'name':'Strathcona Hotel',
+	‘caption’:'I stayed in this hotel for 3 days',
+	‘img’:’<img src=”https://scontent.xx.fbcdn.net/hphotos-xpt1/t31.0-8/12640235_183535172010188_1786731309883747152_o.jpg”/>’},
+	'geometry':{'type':'Point','coordinates':[43.646242,-79.383115]}}
 },
-	'type':'Feature',
+{	'type':'Feature',
 	 'properties':{
-		'name':'Old City Hall',
-		‘caption’:'Old City Hall is next to many shopping malls and across the street is the modern City Hall.',
-		‘img’:’<img src=”https://pbs.twimg.com/media/CXlx91MUEAA5y5M.jpg”/>’},
-		'geometry':{'type':'Point','coordinates':[43.652251, -79.381659]}}
+	'name':'Old City Hall',
+	‘caption’:'Old City Hall is next to many shopping malls and across the street is the modern City Hall.',
+	‘img’:’<img src=”https://pbs.twimg.com/media/CXlx91MUEAA5y5M.jpg”/>’},
+	'geometry':{'type':'Point','coordinates':[43.652251, -79.381659]}}
 },
-	'type':'Feature',
-	 'properties':{
-		'name':'Chinatown',
-		‘caption’:'Chinatown has many shops and plenty of restaurans flooded by locals, university students, and tourists.',
-		‘img’:’<img src=”https://scontent.xx.fbcdn.net/hphotos-xpt1/t31.0-8/12640235_183535172010188_1786731309883747152_o.jpg”/>’},
-		'geometry':{'type':'Point','coordinates':[43.65187, -79.397465]}}
+{	'type':'Feature',
+	'properties':{
+	'name':'Chinatown',
+	‘caption’:'Chinatown has many shops and plenty of restaurans flooded by locals, university students, and tourists.',
+	‘img’:’<img src=”https://scontent.xx.fbcdn.net/hphotos-xpt1/t31.0-8/12640235_183535172010188_1786731309883747152_o.jpg”/>’},
+	'geometry':{'type':'Point','coordinates':[43.65187, -79.397465]}}
 },
-	'type':'Feature',
-	 'properties':{
-		'name':'University of Toronto',
-		‘caption’:'University of Toronto has beautiful architecture.',
-		‘img’:’<img src=”https://scontent.xx.fbcdn.net/hphotos-xlp1/l/t31.0-8/12672001_183535298676842_5888165865527703318_o.jpg”/>’},
-		'geometry':{'type':'Point','coordinates':[43.66246, -79.395467]}}
+{	'type':'Feature',
+	'properties':{
+	'name':'University of Toronto',
+	‘caption’:'University of Toronto has beautiful architecture.',
+	‘img’:’<img src=”https://scontent.xx.fbcdn.net/hphotos-xlp1/l/t31.0-8/12672001_183535298676842_5888165865527703318_o.jpg”/>’},
+	'geometry':{'type':'Point','coordinates':[43.66246, -79.395467]}}
 },
-	'type':'Feature',
-	 'properties':{
-		'name':'University of Toronto Bookstore',
-		‘caption’:'Bookstore humor.',
-		‘img’:’<img src=”https://scontent.xx.fbcdn.net/hphotos-xfl1/t31.0-8/12695057_183542612009444_8486115781740257107_o.jpg”/>’},
-		'geometry':{'type':'Point','coordinates':[43.658822, -79.396643]}}
+{	'type':'Feature',
+	'properties':{
+	'name':'University of Toronto Bookstore',
+	‘caption’:'Bookstore humor.',
+	‘img’:’<img src=”https://scontent.xx.fbcdn.net/hphotos-xfl1/t31.0-8/12695057_183542612009444_8486115781740257107_o.jpg”/>’},
+	'geometry':{'type':'Point','coordinates':[43.658822, -79.396643]}}
 },
-	'type':'Feature',
-	 'properties':{
-		'name':'CN (Canadian National) Tower',
-		‘caption’:'The view from the CN (Canadian National) Tower overlooking the city.',
-		‘img’:’<img src=”https://scontent-atl3-1.xx.fbcdn.net/hphotos-xfa1/t31.0-8/12440390_162926794071026_365281823354817947_o.jpg”/>’},
-		'geometry':{'type':'Point','coordinates':[43.642585, -79.38708]}}
+{	'type':'Feature',
+	'properties':{
+	'name':'CN (Canadian National) Tower',
+	‘caption’:'The view from the CN (Canadian National) Tower overlooking the city.',
+	‘img’:’<img src=”https://scontent-atl3-1.xx.fbcdn.net/hphotos-xfa1/t31.0-8/12440390_162926794071026_365281823354817947_o.jpg”/>’},
+	'geometry':{'type':'Point','coordinates':[43.642585, -79.38708]}}
 },
-	'type':'Feature',
-	 'properties':{
-		'name':'City Hall',
-		‘caption’:'Fireworks at City Hall for New Year\'s',
-		‘img’:’<iframe width="200" height="250" src="https://www.youtube.com/embed/PQd6ckt68X4" frameborder="0" allowfullscreen/>’},
-		'geometry':{'type':'Point','coordinates':[43.653457, -79.382929]}}
-}
-	'type':'Feature',
-	 'properties':{
-		'name':'Casa Loma',
-		‘caption’:'Casa Loma, home to Sir Henry Pellatt, a Canadian financier, later turned into a luxury hotel, and then became a museum.',
-		‘img’:’<img src=”https://scontent.xx.fbcdn.net/hphotos-xap1/t31.0-8/12525491_183535398676832_3266398381754332307_o.jpg”/>’},
-		'geometry':{'type':'Point','coordinates':[43.678064, -79.409363]}}
-}	
-	 'type':'Feature',
-	 'properties':{
-		'name':'Ripley's Aquarium',
-		‘caption’:'Chinatown has many shops and plenty of restaurans flooded by locals, university students, and tourists.',
-		‘img’:’<img src=”https://scontent.xx.fbcdn.net/hphotos-xfl1/t31.0-8/12698321_183535405343498_4643251889019397941_o.jpg”/>’},
-		'geometry':{'type':'Point','coordinates':[43.642438, -79.386157]}}
+{	'type':'Feature',
+	'properties':{
+	'name':'City Hall',
+	‘caption’:'Fireworks at City Hall for New Year\'s',
+	‘img’:’<iframe width="200" height="250" src="https://www.youtube.com/embed/PQd6ckt68X4" frameborder="0" allowfullscreen/>’},
+	'geometry':{'type':'Point','coordinates':[43.653457, -79.382929]}}
+},
+{	'type':'Feature',
+	'properties':{
+	'name':'Casa Loma',
+	‘caption’:'Casa Loma, home to Sir Henry Pellatt, a Canadian financier, later turned into a luxury hotel, and then became a museum.',
+	‘img’:’<img src=”https://scontent.xx.fbcdn.net/hphotos-xap1/t31.0-8/12525491_183535398676832_3266398381754332307_o.jpg”/>’},
+	'geometry':{'type':'Point','coordinates':[43.678064, -79.409363]}}
+},	
+{	'type':'Feature',
+	'properties':{
+	'name':'Ripley's Aquarium',
+	‘caption’:'Ripley's.',
+	‘img’:’<img src=”noimageyet”/>’},
+	'geometry':{'type':'Point','coordinates':[43.642438, -79.386157]}}
 },
 
 	]};
