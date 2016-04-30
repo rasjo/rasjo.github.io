@@ -93,7 +93,7 @@ access_token=pk.eyJ1IjoicmFzam8iLCJhIjoiY2ltaWl2NW00MDBhdHZha2dpdm5wNGw4dyJ9.R_E
 	
 		info.update = function (props) {
 			this._div.innerHTML = '<h4>Tornado Count</h4>' +  (props ?
-				'<b>' + props.NAMELSAD + '</b><br />' + props.Count_ + ' tornadoes '
+				'<b>' + props.County + '</b><br />' + props.Count + ' tornadoes '
 				: 'Select by County');
 		};
 	
@@ -116,7 +116,7 @@ access_token=pk.eyJ1IjoicmFzam8iLCJhIjoiY2ltaWl2NW00MDBhdHZha2dpdm5wNGw4dyJ9.R_E
 				color: fff,
 				dashArray: '3',
 				fillOpacity: 0.7,
-				fillColor: getColor(feature.properties.Count_)
+				fillColor: getColor(feature.properties.Count)
 			};
 		}
 		
