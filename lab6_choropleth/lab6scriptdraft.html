@@ -13,13 +13,11 @@ body {
 	width: 1500px;
 	height: 800px;
 }
-
 .info {
 	padding: 6px 8px;
 	font: 14px/16px Arial;
 	background: black;
-	background: rgba(255,255,255,0.8);
-	box-shadow: 0 0 15px rgba(0,0,0,0.2);
+	box-shadow: 000;
 	border-radius: 5px;
 }
 .info h4 {
@@ -44,114 +42,119 @@ body {
 
 <body> 
 <center>
-<font face="Cambria" size="200" color="#000000">Choropleth map of 1990s PA tornadoes</font><br><br>
+<font face="Cambria" size="25" color="#000000">Choropleth map of 1990s PA tornadoes</font><br><br>
 		
 <div id="map"></div>
 <script src="http://cdn.leafletjs.com/leaflet/v0.7.7/leaflet.js"></script>
 	
-<script type="text/javascript" src="tornadoespa90s.js"></script>
-
+<script type="text/javascript" src="counties_id.js"></script>
+	
 <script>
-// basemap, points, prep-choro
-var cities = new L.LayerGroup();
+// Add basemap
+	var cities= new L.LayerGroup();
 	L.marker([40.282132, -76.9154449]).bindPopup('<center>Harrisburg<br>Capital</center>').addTo(cities),
-	L.marker([40.0048631, -75.1882441]).bindPopup('<center>Philadelphia <br>Home of TU Owls</center>').addTo(cities);
-	L.marker([40.4314779, -80.0507116]).bindPopup('<center>Pittsburgh</center>').addTo(cities);	
+	L.marker([40.0048631, -75.1882441]).bindPopup('<center>Philadelphia <br>Home of TU Owls</center>').addTo
 
-var mbAttr = 'Map data &copy; <a href="http://openstreetmap.org">OpenStreetMap</a> contributors, ' +
+(cities);
+	L.marker([40.4314779, -80.0507116]).bindPopup('<center>Pittsburgh</center>').addTo(cities);	
+		var mbAttr = 'Map data &copy; <a href="http://openstreetmap.org">OpenStreetMap</a> contributors, ' 
+
++
 			'<a href="http://creativecommons.org/licenses/by-sa/2.0/">CC-BY-SA</a>, ' +
 			'Imagery © <a href="http://mapbox.com">Mapbox</a>',
 			mbUrl = 'https://api.tiles.mapbox.com/v4/{id}/{z}/{x}/{y}.png?
 
 access_token=pk.eyJ1IjoicmFzam8iLCJhIjoiY2ltaWl2NW00MDBhdHZha2dpdm5wNGw4dyJ9.R_EGV3kJIEkgVn-9uOHyTA';
-	var mbLight   = L.tileLayer(mbUrl, {id: 'mapbox.light', attribution: mbAttr});
-	var map = L.map('map', {
-		center: [40.8444034, -77.6937927],
-		zoom: 7,
-		layers: [mbLight, cities]
-});
-	var baseMaps = {
-    		"Basemap": mbLight,
-};
+		var mbLight = L.tileLayer(mbUrl, {id: 'mapbox.light', attribution: mbAttr});
+		var map = L.map('map', {
+			center: [40.8444034, -77.6937927],
+			zoom: 8,
+			layers: [mbLight, cities]
+		});
 	
-	var overlays = {
-		"Major Cities": cities,
-};
-	
-L.control.layers(baseMaps, overlays).addTo(map);
-
-// hover over county for tornado count
-	var info = L.control();
-
-info.onAdd = function (map) {
-	this._div = L.DomUtil.create('div', 'info');
-	this.update();
-	return this._div;
-};
-	
-info.update = function (props) {
-	this._div.innerHTML = '<h4>Tornado Count</h4>' +  (props ?
-	'<b>' + props.NAMELSAD + '</b><br />' + props.Count_ + ' tornadoes '
-		: 'Hover over a county');
+		var baseMaps = {
+    			"Basemap": mbLight,
 		};
 	
-info.addTo(map);
-		
-// choropleth for tornado
-function getColor(d) {
-	return d > 25 ? '#993404' :
-	d > 20  ? '#d95f0e' :
-	d > 15  ? '#fe9929' :
-	d > 10  ? '#fed98e' :
-	d > 5   ? '#ffffd4' :
-	           '#eeeeee';
-}
+		var overlays = {
+			"Major Cities": cities
+		};
 	
-function style(feature) {
-	return {
-		weight: 2,
-		opacity: 1,
-		color: fff,
-		dashArray: '3',
-		fillOpacity: 0.7,
-		fillColor: getColor(feature.properties.Count_)
+		L.control.layers(baseMaps, overlays).addTo(map);
+		
+		// hover for county info tornadoes
+		var info = L.control();
+	
+		info.onAdd = function (map) {
+			this._div = L.DomUtil.create('div', 'info');
+			this.update();
+			return this._div;
+		};
+	
+		info.update = function (props) {
+			this._div.innerHTML = '<h4>Tornado Count</h4>' +  (props ?
+				'<b>' + props.NAMELSAD + '</b><br />' + props.Count_ + ' tornadoes '
+				: 'Select by County');
+		};
+	
+		info.addTo(map);
+		
+		// choropleth by tornado count
+		function getColor(d) {
+			return d > 25 ? '#993404' :
+			       d > 20  ? '#d95f0e' :
+		               d > 15  ? '#fe9929' :
+			       d > 10  ? '#fed98e' :
+			       d > 5   ? '#ffffd4' :
+					  '#eeeeee';
+		}
+	
+		function style(feature) {
+			return {
+				weight: 2,
+				opacity: 1,
+				color: fff,
+				dashArray: '3',
+				fillOpacity: 0.7,
+				fillColor: getColor(feature.properties.Count_)
 			};
 		}
 		
-function highlightFeature(e) {
-	var layer = e.target;
-		layer.setStyle({
-		weight: 5,
-		color: 000,
-		dashArray: '',
-		fillOpacity: 0.7
-});
+		function highlightFeature(e) {
+			var layer = e.target;
 	
-if (!L.Browser.ie && !L.Browser.opera) {
-	layer.bringToFront();
-}
+			layer.setStyle({
+			weight: 5,
+			color: 000,
+			dashArray: '',
+			fillOpacity: 0.7
+		});
 	
-info.update(layer.feature.properties);
-}
+		if (!L.Browser.ie && !L.Browser.opera) {
+			layer.bringToFront();
+		}
 	
-var tornadoespa90s;
-		
-function resetHighlight(e) {
-geojson.resetStyle(e.target);
-info.update();
-}
-	
-function zoomToFeature(e) {
-	map.fitBounds(e.target.getBounds());
+		info.update(layer.feature.properties);
 	}
 	
-function onEachFeature(feature, layer) {
-	layer.on({
-	mouseover: highlightFeature,
-	mouseout: resetHighlight,
-	click: zoomToFeature
-});
-}
+		var tornadoespa90s;
+		
+		function resetHighlight(e) {
+		geojson.resetStyle(e.target);
+		info.update();
+	}
+	
+		function zoomToFeature(e) {
+			map.fitBounds(e.target.getBounds());
+		}
+	
+		function onEachFeature(feature, layer) {
+			layer.on({
+				mouseover: highlightFeature,
+				mouseout: resetHighlight,
+				click: zoomToFeature
+			});
+		}
 	
 		geojson = L.geoJson(tornadoespa90s, {
 			style: style,
