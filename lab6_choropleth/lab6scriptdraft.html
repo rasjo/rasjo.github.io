@@ -1,47 +1,34 @@
 <html>
-<head>
-<title>Pennsylvania Tornadoes in the 1990s</title>
-
-<link rel="stylesheet" href="http://cdn.leafletjs.com/leaflet/v0.7.7/leaflet.css" />
+<head>  
+<title>PA Tornadoes</title>  
+				
+<link rel="stylesheet" href="http://cdn.leafletjs.com/leaflet/v0.7.7/leaflet.css" />	
 
 <style>
 body {
-	background-image: url('')
-}
-h1 {
-	font-family: Arial;
-	font-size: 25px;
-	font-weight: none;
-	color: 000;
 	background-color: fff;
 }
-h2 {
-	font-family: Arial;
-	font-size: 25px;
-	font-weight: none;
-	color: 000;
-	background-color: fff;
-}
+		
 #map {
-	width: 1000px;
-	height: 900px;
+	width: 1500px;
+	height: 800px;
 }
 
 .info {
 	padding: 6px 8px;
-	font: 14px Arial;
-	background: white;
-	background: 999999;
+	font: 14px/16px Arial;
+	background: fff;
 	border-radius: 5px;
 }
 .info h4 {
 	margin: 0 0 5px;
-	color: 000000;
+	color: #777;
 }
+	
 .legend {
 	text-align: left;
 	line-height: 18px;
-	color: 000000;
+	color: #555;
 }
 .legend i {
 	width: 18px;
@@ -51,95 +38,111 @@ h2 {
 	opacity: 0.7;
 }
 </style>
-
 </head>
 
-<body>
+<body> 
+<center>
+<font face="Cambria" size="200" color="#000000">Choropleth map of 1990s PA tornadoes</font><br><br>
+		
 <div id="map"></div>
-
 <script src="http://cdn.leafletjs.com/leaflet/v0.7.7/leaflet.js"></script>
-
-<script type = "text/javascript" src = "tornadoespa90s.js"></script>
+	
+<script type="text/javascript" src="tornadoespa90s.js"></script>
 
 <script>
+// basemap, points, prep-choro
 var cities = new L.LayerGroup();
-    L.marker([40.2821392, -76.9154449]).bindPopup('Harrisburg, Capital').addTo(cities);
-    L.marker([40.0048631, -75.1882441]).bindPopup('Philadelphia, Home of TU Owls').addTo(cities);
-    L.marker([40.4314779, -80.0507116]).bindPopup('Pittsburgh').addTo(cities);
+	L.marker([40.282132, -76.9154449]).bindPopup('<center>Harrisburg<br>Capital</center>').addTo(cities),
+	L.marker([40.0048631, -75.1882441]).bindPopup('<center>Philadelphia <br>Home of TU Owls</center>').addTo(cities);
+	L.marker([40.4314779, -80.0507116]).bindPopup('<center>Pittsburgh</center>').addTo(cities);	
 
-var Attr = 'Map data &copy; <a href="http://openstreetmap.org">OpenStreetMap</a> contributors, ' +
-'<a href="http://creativecommons.org/licenses/by-sa/2.0/">CC-BY-SA</a>, ' +
-'Imagery © <a href="http://mapbox.com">Mapbox</a>',
-			Url = 'https://api.tiles.mapbox.com/v4/{id}/{z}/{x}/{y}.png?
+var mbAttr = 'Map data &copy; <a href="http://openstreetmap.org">OpenStreetMap</a> contributors, ' +
+			'<a href="http://creativecommons.org/licenses/by-sa/2.0/">CC-BY-SA</a>, ' +
+			'Imagery © <a href="http://mapbox.com">Mapbox</a>',
+			mbUrl = 'https://api.tiles.mapbox.com/v4/{id}/{z}/{x}/{y}.png?
 
-access_token=pk.eyJ1IjoicmFzam8iLCJhIjoiY2ltaWl2NW00MDBhdHZha2dpdm5wNGw4dyJ9.R_EGV3kJIEkgVn-9uOHyTA';
+access_token=pk.eyJ1IjoibWFwYm94IiwiYSI6ImNpandmbXliNDBjZWd2M2x6bDk3c2ZtOTkifQ._QA7i5Mpkd_m30IGElHziw';
+	var mbLight   = L.tileLayer(mbUrl, {id: 'mapbox.light', attribution: mbAttr});
+	var map = L.map('map', {
+		center: [40.4384521, -79.7805185],
+		zoom: 10,
+		layers: [mbLight, cities]
+});
+	var baseMaps = {
+    		"Basemap": mbLight,
+};
+	
+	var overlays = {
+		"Major Cities": cities,
+};
+	
+L.control.layers(baseMaps, overlays).addTo(map);
 
-var light = L.tileLayer(Url, {id: 'mapbox.light', attribution: Attr});
-var dark = L.tileLayer(Url, {id: 'mapbox.dark', attribution: Attr});
-var map = L.map('map', {center: [40.2821392, -76.9154449],
-    	zoom: 8,
-layers: [light, dark, cities]});
-var baseMaps = {'Light' : light, 'Dark': dark};
+// hover over county for tornado count
+	var info = L.control();
 
-var overlay = {'Populous Cities: cities};
-L.control.layers(baseMaps, overlay).addTo(map);
-    				
-// county layer on hover
-var info = L.control();
 info.onAdd = function (map) {
 	this._div = L.DomUtil.create('div', 'info');
 	this.update();
 	return this._div;
-	};
-info.update = function (tornadoespa90s) {
-
-this._div.innerHTML = '<h4>PA Tornadoes in the 1990s</h4>' +  (tornadoespa90s ?
-	'<b>' + tornadoespa90s.NAMELSAD + '</b><br />' + tornadoespa90s.count_ + ' Tornadoes' : 'Hover Over County');
 };
+	
+info.update = function (props) {
+	this._div.innerHTML = '<h4>Tornado Count</h4>' +  (props ?
+	'<b>' + props.NAMELSAD + '</b><br />' + props.count_ + ' tornadoes '
+		: 'Hover over a county');
+		};
+	
 info.addTo(map);
-
-// tornado occurrances for choropleth
-
+		
+// choropleth for tornado
 function getColor(d) {
 	return d > 25 ? '#993404' :
-	       d > 20  ? '#d95f0e' :
-	       d > 15  ? '#fe9929' :
-	       d > 10  ? '#fed98e' :
-	       d > 5   ? '#ffffd4' :
-	                  '#eeeeee';
-		}
+	d > 20  ? '#d95f0e' :
+	d > 15  ? '#fe9929' :
+	d > 10  ? '#fed98e' :
+	d > 5   ? '#ffffd4' :
+	           '#eeeeee';
+}
+	
 function style(feature) {
 	return {
 		weight: 2,
 		opacity: 1,
-		color: ffffff,
-		dashArray: '3',	
+		color: fff,
+		dashArray: '3',
 		fillOpacity: 0.7,
 		fillColor: getColor(feature.properties.count_)
-};
+			};
 		}
+		
 function highlightFeature(e) {
-	var layer = e.target;	
+	var layer = e.target;
 		layer.setStyle({
 		weight: 5,
-		color: 999999,
+		color: 000,
 		dashArray: '',
-		fillOpacity: 0.8
+		fillOpacity: 0.7
 });
+	
 if (!L.Browser.ie && !L.Browser.opera) {
 	layer.bringToFront();
 }
+	
 info.update(layer.feature.properties);
 }
-
-var tornadoespa90s;
-	function resetHighlight(e) {
-	geojson.resetStyle(e.target);
-	info.update();
+	
+var counties_id;
+		
+function resetHighlight(e) {
+geojson.resetStyle(e.target);
+info.update();
 }
+	
 function zoomToFeature(e) {
 	map.fitBounds(e.target.getBounds());
-}
+	}
+	
 function onEachFeature(feature, layer) {
 	layer.on({
 	mouseover: highlightFeature,
@@ -147,28 +150,36 @@ function onEachFeature(feature, layer) {
 	click: zoomToFeature
 });
 }
-geojson = L.geoJson(counties, {
-    	style: style,
-    	onEachFeature: onEachFeature
-    	}).addTo(map);
-var legend = L.control({position: 'bottomright'});
-
-legend.onAdd = function (map) {
-	var div = L.DomUtil.create('div', 'info legend'),
-	grades = [0, 5, 10, 15, 20, 25],
-	labels = [],
-
-L.control.layers(overlayMaps).addTo(map);
-map.attributionControl.addAttribution('Tornado Data &copy; <a href="http://census.gov/">PASDA, NOAA</a>');
-
-for (var i = 0; i < grades.length; i++) {
-div.innerHTML +=
-	'<i style="background:' + getColor(grades[i] + 1) + '"></i> ' +
-	grades[i] + (grades[i + 1] ? '&ndash;' + grades[i + 1] + '<br>' : '+');
-    	}
-    	return div;
+	
+		geojson = L.geoJson(tornadoespa90s, {
+			style: style,
+			onEachFeature: onEachFeature
+		}).addTo(map);
+			
+		var legend = L.control({position: 'bottomright'});
+	
+		legend.onAdd = function (map) {
+	
+			var div = L.DomUtil.create('div', 'info legend'),
+				grades = [0, 5, 10, 15, 20, 25],
+				labels = [],
+				from, to;
+	
+			for (var i = 0; i < grades.length; i++) {
+				from = grades[i];
+				to = grades[i + 1];
+	
+				labels.push(
+					'<i style="background:' + getColor(from + 1) + '"></i> ' +
+					from + (to ? '&ndash;' + to : '+'));
+			}
+	
+		div.innerHTML = labels.join('<br>');
+		return div;
 	};
-legend.addTo(map);	
+	
+	legend.addTo(map);
+		
 </script>
 </body>
 </html>
