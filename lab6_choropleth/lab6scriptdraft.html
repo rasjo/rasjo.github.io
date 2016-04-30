@@ -47,7 +47,7 @@ body {
 <div id="map"></div>
 <script src="http://cdn.leafletjs.com/leaflet/v0.7.7/leaflet.js"></script>
 	
-<script type="text/javascript" src="torna_id.js"></script>
+<script type="text/javascript" src="rasjo.github.io/lab6_choropleth/torna_id.js"></script>
 	
 <script>
 // Add basemap
@@ -137,7 +137,7 @@ access_token=pk.eyJ1IjoicmFzam8iLCJhIjoiY2ltaWl2NW00MDBhdHZha2dpdm5wNGw4dyJ9.R_E
 		info.update(layer.feature.properties);
 	}
 	
-		var counties;
+		var torna_id;
 		
 		function resetHighlight(e) {
 		geojson.resetStyle(e.target);
@@ -156,7 +156,7 @@ access_token=pk.eyJ1IjoicmFzam8iLCJhIjoiY2ltaWl2NW00MDBhdHZha2dpdm5wNGw4dyJ9.R_E
 			});
 		}
 	
-		geojson = L.geoJson(counties, {
+		geojson = L.geoJson(torna_id, {
 			style: style,
 			onEachFeature: onEachFeature
 		}).addTo(map);
