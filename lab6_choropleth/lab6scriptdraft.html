@@ -91,7 +91,7 @@ info.onAdd = function (map) {
 	
 info.update = function (props) {
 	this._div.innerHTML = '<h4>Tornado Count</h4>' +  (props ?
-	'<b>' + props.NAMELSAD + '</b><br />' + props.count_ + ' tornadoes '
+	'<b>' + props.NAMELSAD + '</b><br />' + props.Count_ + ' tornadoes '
 		: 'Hover over a county');
 		};
 	
@@ -114,7 +114,7 @@ function style(feature) {
 		color: fff,
 		dashArray: '3',
 		fillOpacity: 0.7,
-		fillColor: getColor(feature.properties.count_)
+		fillColor: getColor(feature.properties.Count_)
 			};
 		}
 		
